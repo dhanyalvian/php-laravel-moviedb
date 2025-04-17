@@ -1,0 +1,58 @@
+header {
+    background-color: #ffffff;
+}
+
+header ul>li {
+    font-size: 16px;
+}
+
+header div .navbar-brand {
+    margin-right: 10px;
+}
+
+header div .navbar-brand>a>i {
+    font-size: 2rem;
+    color: #0a5ed7;
+}
+
+header .nav-search {
+    margin-left: 20px;
+    border: 1px solid #8f9294;
+}
+
+header .nav-search i {
+    color: #8f9294;
+}
+
+header ul#nav-href>li {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+header .form-control:focus {
+    border-color: rgba(100, 100, 100, 1) !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+header .uname {
+    margin-left: 5px;
+}
+
+header .nav-lang {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+header .nav-lang a {
+    color: #666666;
+}
+
+header .nav-lang a:hover {
+    color: #000000;
+}
+
+header .nav-lang a>i {
+    font-size: 1.4rem;
+}

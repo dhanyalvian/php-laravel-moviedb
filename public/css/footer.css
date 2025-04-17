@@ -1,0 +1,13 @@
+footer.py-3 {
+    padding-bottom: 0 !important;
+}
+
+footer p a {
+    color: #666666;
+    font-style: normal;
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
