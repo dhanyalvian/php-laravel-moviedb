@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Home;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Summary of index
@@ -13,15 +13,12 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        $cfg = [
-            'url_img_thumbnail' => env('TMDB_URL_IMG_THUMBNAIL', ''),
-            'format_date' => env('FORMAT_DATE', ''),
-        ];
-        $home = new Home();
-        $nowplaying = $home->getMovieNowPlaying(rand(1, 10));
-        $popular = $home->getMoviePopular(rand(1, 10));
-        $toprated = $home->getMovieTopRated(rand(1, 10));
-        $upcoming = $home->getMovieUpcoming(rand(1, 10));
+        $cfg = $this->getConfigApp();
+        $model = new Home();
+        $nowplaying = $model->getMovieNowPlaying($this->getPage());
+        $popular = $model->getMoviePopular($this->getPage());
+        $toprated = $model->getMovieTopRated($this->getPage());
+        $upcoming = $model->getMovieUpcoming($this->getPage());
         $data = compact(
             'cfg',
             'nowplaying',
@@ -31,5 +28,10 @@ class HomeController extends Controller
         );
 
         return view('home', $data);
+    }
+    
+    private function getPage(): int
+    {
+        return rand(1, 20);
     }
 }

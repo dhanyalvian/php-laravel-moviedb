@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController,
+    App\Http\Controllers\MoviesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ use App\Http\Controllers\HomeController;
 //     return view('home');
 // });
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/movies', [MoviesController::class, 'list']);
+Route::get('/movies/{uid}', [MoviesController::class, 'detail']);

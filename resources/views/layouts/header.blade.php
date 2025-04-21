@@ -2,7 +2,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div class="navbar-brand">
-                <a href="#">
+                <a href="{{ url('/') }}">
                     <i class="bi bi-film"></i>
                 </a>
             </div>
