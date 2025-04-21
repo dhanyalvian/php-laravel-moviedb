@@ -7,22 +7,22 @@
 
 <body>
     @include('layouts.header')
+    @php($max = 5)
 
-    <main class="p-3">
+    <main class="">
         <div class="container">
             <h2>
                 Now Playing Movies
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
-
-            <div class="row p-2 align-items-center">
-                @php($max = 6)
+            
+            <div class="row p-2">
                 @php($no = 1)
                 @forelse ($nowplaying['results'] as $rec)
                 @if($no > $max) @continue @endif
                 @php($movieUrl = url('/movies/' . $rec['id']))
                 @php($movieTitle = $rec['title'])
-                <div class="card @if($no == 1) first @endif">
+                <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
                         <a href="{{ $movieUrl }}">
                             <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"
@@ -55,14 +55,13 @@
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
 
-            <div class="row p-2 align-items-center">
-                @php($max = 6)
+            <div class="row p-2">
                 @php($no = 1)
                 @forelse ($popular['results'] as $rec)
                 @if($no > $max) @continue @endif
                 @php($movieUrl = url('/movies/' . $rec['id']))
                 @php($movieTitle = $rec['title'])
-                <div class="card @if($no == 1) first @endif">
+                <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
                         <a href="{{ $movieUrl }}">
                             <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"
@@ -95,14 +94,13 @@
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
             
-            <div class="row p-2 align-items-center">
-                @php($max = 6)
+            <div class="row p-2">
                 @php($no = 1)
                 @forelse ($toprated['results'] as $rec)
                 @if($no > $max) @continue @endif
                 @php($movieUrl = url('/movies/' . $rec['id']))
                 @php($movieTitle = $rec['title'])
-                <div class="card @if($no == 1) first @endif">
+                <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
                         <a href="{{ $movieUrl }}">
                             <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"
@@ -135,14 +133,13 @@
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
 
-            <div class="row p-2 align-items-center">
-                @php($max = 6)
+            <div class="row p-2">
                 @php($no = 1)
                 @forelse ($upcoming['results'] as $rec)
                 @if($no > $max) @continue @endif
                 @php($movieUrl = url('/movies/' . $rec['id']))
                 @php($movieTitle = $rec['title'])
-                <div class="card @if($no == 1) first @endif">
+                <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
                         <a href="{{ $movieUrl }}">
                             <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"

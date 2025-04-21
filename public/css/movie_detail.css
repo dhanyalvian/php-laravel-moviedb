@@ -1,5 +1,9 @@
-main#movies-detail>.header {
-    /* background-image: linear-gradient(to right, rgba(10.5, 31.5, 52.5, 1) calc((50vw - 170px) - 340px), rgba(10.5, 31.5, 52.5, 0.84) 50%, rgba(10.5, 31.5, 52.5, 0.84) 100%); */
+main.movies-detail {
+    background-color: green;
+    background-image: linear-gradient(to right, rgba(10.5, 31.5, 52.5, 1) calc((50vw - 170px) - 340px), rgba(10.5, 31.5, 52.5, 0.84) 50%, rgba(10.5, 31.5, 52.5, 0.84) 100%);
+}
+
+main.movies-detail .header {    
     margin: 0;
     width: 100%;
     position: relative;
@@ -7,15 +11,15 @@ main#movies-detail>.header {
     border-style: none;
 }
 
-main#movies-detail>.header>.custom_bg {
-    border-bottom: 1px solid var(--primaryColor);
+main.movies-detail .header .custom_bg {
+    /* border-bottom: 1px solid var(--primaryColor); */
     background-position: left calc((50vw - 170px) - 340px) top;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 570px;
+    /* min-height: 570px; */
 }
 
-main#movies-detail>.header>.custom_bg img.poster {
+main.movies-detail .header .custom_bg img.poster {
     width: 300px;
     height: 450px;
 }

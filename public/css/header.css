@@ -1,5 +1,7 @@
 header {
     background-color: #ffffff;
+    max-width: var(--maxPrimaryPageWidth);
+    width: 100%;
 }
 
 header ul>li {

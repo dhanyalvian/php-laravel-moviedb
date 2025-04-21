@@ -16,7 +16,7 @@ class HomeController extends BaseController
         $cfg = $this->getConfigApp();
         $model = new Home();
         $nowplaying = $model->getMovieNowPlaying($this->getPage());
-        $popular = $model->getMoviePopular($this->getPage());
+        $popular = $model->getMoviePopular($this->getPage(1));
         $toprated = $model->getMovieTopRated($this->getPage());
         $upcoming = $model->getMovieUpcoming($this->getPage());
         $data = compact(
@@ -30,8 +30,12 @@ class HomeController extends BaseController
         return view('home', $data);
     }
     
-    private function getPage(): int
+    private function getPage(int $page = 0): int
     {
+        if ($page) {
+            return $page;
+        }
+        
         return rand(1, 20);
     }
 }
