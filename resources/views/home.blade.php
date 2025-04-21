@@ -3,13 +3,14 @@
 
 <head>
     @include('layouts.head')
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 
 <body>
     @include('layouts.header')
-    @php($max = 5)
+    @php($max = 6)
 
-    <main class="">
+    <main class="movie-list">
         <div class="container">
             <h2>
                 Now Playing Movies

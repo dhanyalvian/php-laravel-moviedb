@@ -1,25 +1,49 @@
-main.movies-detail {
-    background-color: green;
-    background-image: linear-gradient(to right, rgba(10.5, 31.5, 52.5, 1) calc((50vw - 170px) - 340px), rgba(10.5, 31.5, 52.5, 0.84) 50%, rgba(10.5, 31.5, 52.5, 0.84) 100%);
+main.movies-detail .flex-row .card {
+    min-width: 302px;
+    width: 302px;
+    border: 1px solid #a0a0a0;
 }
 
-main.movies-detail .header {    
-    margin: 0;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    border-style: none;
-}
-
-main.movies-detail .header .custom_bg {
-    /* border-bottom: 1px solid var(--primaryColor); */
-    background-position: left calc((50vw - 170px) - 340px) top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* min-height: 570px; */
-}
-
-main.movies-detail .header .custom_bg img.poster {
+main.movies-detail .flex-row .card .card-img {
     width: 300px;
     height: 450px;
+}
+
+main.movies-detail .information {
+    margin-left: 30px;
+}
+
+main.movies-detail .information .info-part {
+    /* font-weight: normal;
+    font-size: 15px; */
+    /* margin-left: 2px; */
+}
+
+main.movies-detail .information .info-part button {
+    font-size: 14px;
+}
+
+main.movies-detail .information .info-part button sup {
+    top: -3px
+}
+
+main.movies-detail .card .card-body {
+    border-top: 1px solid #a0a0a0;
+    padding: 6px 10px;
+}
+
+main.movies-detail .card .tagline {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+main.movies-detail .information .overview {
+    margin-top: 30px;
+}
+
+main.movies-detail .information .overview p {
+    font-weight: normal;
+    font-size: 16px;
+    margin-left: 2px;
 }
