@@ -2,6 +2,7 @@ main.movies-detail .flex-row .card {
     min-width: 302px;
     width: 302px;
     border: 1px solid #a0a0a0;
+    border-radius: 10px;
 }
 
 main.movies-detail .flex-row .card .card-img {
@@ -9,21 +10,35 @@ main.movies-detail .flex-row .card .card-img {
     height: 450px;
 }
 
+main.movies-detail .flex-row .card .card-img,
+main.movies-detail .flex-row .card .card-img img {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 main.movies-detail .information {
     margin-left: 30px;
 }
 
-main.movies-detail .information .info-part {
-    /* font-weight: normal;
-    font-size: 15px; */
-    /* margin-left: 2px; */
+main.movies-detail .information .info-part .btn-outline-secondary:first-child {
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-main.movies-detail .information .info-part button {
+main.movies-detail .information .info-part .btn-outline-secondary:last-child {
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+main.movies-detail .information .info-part span {
     font-size: 14px;
 }
 
-main.movies-detail .information .info-part button sup {
+main.movies-detail .information .info-part span sup {
     top: -3px
 }
 
@@ -36,6 +51,27 @@ main.movies-detail .card .tagline {
     font-style: italic;
     font-weight: 400;
     font-size: 14px;
+}
+
+main.movies-detail .information .action {
+    margin-top: 30px;
+}
+
+main.movies-detail .information .action .btn-group a.btn-outline-secondary:first-child {
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+main.movies-detail .information .action .btn-group a.btn-outline-secondary:last-child {
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;   
+}
+
+main.movies-detail .information .action a>span {
+    font-size: 20px;
+    padding: 10px;
 }
 
 main.movies-detail .information .overview {

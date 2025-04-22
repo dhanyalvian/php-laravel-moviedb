@@ -50,10 +50,6 @@ main .row .card:last-child {
     margin-right: 0 !important;
 }
 
-/* main .row .card:nth-child(4) {
-    margin-left: 0 !important;
-} */
-
 main .row .card .card-img,
 main .row .card .card-img img,
 main .row .card .card-img svg {
@@ -61,9 +57,12 @@ main .row .card .card-img svg {
     height: 273px;
 }
 
+main .row .card .card-img,
 main .row .card .card-img-top {
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 main .row .card.first {

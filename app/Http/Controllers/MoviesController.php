@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Models\Movies;
+use App\Models\Home;
 
 class MoviesController extends BaseController
 {
@@ -21,13 +22,15 @@ class MoviesController extends BaseController
         $score = $this->getMovieScore($detail);
         $origin = $this->getMovieOrigin($detail);
         $genres = $this->getMovieGenres($detail);
+        $nowplaying = (new Home())->getMovieNowPlaying();
         $data = compact(
             'cfg',
             'detail',
             'runtime',
             'score',
             'origin',
-            'genres'
+            'genres',
+            'nowplaying'
         );
 
         return view('movies/detail', $data);
