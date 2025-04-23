@@ -36,6 +36,6 @@ class HomeController extends BaseController
             return $page;
         }
         
-        return rand(1, 10);
+        return rand(1, 25);
     }
 }

@@ -62,7 +62,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="others">
                             <div class="row">
                                 <div class="col">
@@ -105,11 +105,11 @@
                     @if($no > $max) @continue @endif
                     @php($castUrl = url('/movies/' . $rec['id']))
                     @php($castName = $rec['name'])
+                    @php($photoProfile = $rec['profile_path'] ? $cfg['url_img_profile'] . $rec['profile_path'] : '')
                     <div class="card d-flex flex-wrap align-items-left">
                         <div class="card-img">
                             <a href="{{ $castUrl }}">
-                                <img data-original="{{ $cfg['url_img_profile'] . $rec['profile_path'] }}"
-                                    class="card-img-top lazyload" alt="{{ $castName }}">
+                                <img data-original="{{ $photoProfile }}" class="card-img-top lazyload" alt="{{ $castName }}">
                             </a>
                         </div>
                         <div class="card-body">
