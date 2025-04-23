@@ -70,8 +70,9 @@
                                     <p>{{ $detail['status'] }}</p>
                                 </div>
                                 <div class="col">
+                                    @php($budget = ($detail['budget']) ? '$' . number_format($detail['budget']) : '-')
                                     <h5>Budget</h5>
-                                    <p>${{ number_format($detail['budget']) }}</p>
+                                    <p>{{ $budget }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -80,8 +81,9 @@
                                     <p>{{ $detail['original_language'] }}</p>
                                 </div>
                                 <div class="col">
+                                    @php($revenue = ($detail['revenue']) ? '$' . number_format($detail['revenue']) : '-')
                                     <h5>Revenue</h5>
-                                    <p>${{ number_format($detail['revenue']) }}</p>
+                                    <p>{{ $revenue }}</p>
                                 </div>
                             </div>
                         </div>
