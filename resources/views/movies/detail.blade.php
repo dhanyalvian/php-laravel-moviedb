@@ -8,7 +8,7 @@
 
     <body>
         @include('layouts.header')
-        @php($max = 6)
+        @php($max = 8)
 
         <main class="movies-detail border-bottom">
             <div class="container">
@@ -54,12 +54,35 @@
                                 <a href="#" class="btn btn-outline-secondary" title="Add to list">
                                     <span class="bi bi-list-check"></span>
                                 </a>
-                                <a href="#" class="btn btn-outline-secondary active" title="Mark as favorite">
+                                <a href="#" class="btn btn-outline-secondary" title="Mark as favorite">
                                     <span class="bi bi-heart-fill"></span>
                                 </a>
-                                <a href="#" class="btn btn-outline-secondary active" title="Add to your watchlist">
-                                    <span class="bi bi-bookmark-fill"></span>
+                                <a href="#" class="btn btn-outline-secondary" title="Add to your watchlist">
+                                    <span class="bi bi-bookmark"></span>
                                 </a>
+                            </div>
+                        </div>
+                        
+                        <div class="others">
+                            <div class="row">
+                                <div class="col">
+                                    <h5>Status</h5>
+                                    <p>{{ $detail['status'] }}</p>
+                                </div>
+                                <div class="col">
+                                    <h5>Budget</h5>
+                                    <p>${{ number_format($detail['budget']) }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h5>Original Language</h5>
+                                    <p>{{ $detail['original_language'] }}</p>
+                                </div>
+                                <div class="col">
+                                    <h5>Revenue</h5>
+                                    <p>${{ number_format($detail['revenue']) }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,41 +90,41 @@
             </div>
         </main>
 
-        <div>
+        <div class="top-cast">
             <div class="container">
                 <h2>
-                    Now Playing Movies
+                    Top Cast
                     <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
                     @php($no = 1)
-                    @forelse ($nowplaying['results'] as $rec)
+                    @forelse ($topcast['cast'] as $rec)
                     @if($no > $max) @continue @endif
-                    @php($movieUrl = url('/movies/' . $rec['id']))
-                    @php($movieTitle = $rec['title'])
+                    @php($castUrl = url('/movies/' . $rec['id']))
+                    @php($castName = $rec['name'])
                     <div class="card d-flex flex-wrap align-items-left">
                         <div class="card-img">
-                            <a href="{{ $movieUrl }}">
-                                <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"
-                                    class="card-img-top lazyload" alt="{{ $movieTitle }}">
+                            <a href="{{ $castUrl }}">
+                                <img data-original="{{ $cfg['url_img_profile'] . $rec['profile_path'] }}"
+                                    class="card-img-top lazyload" alt="{{ $castName }}">
                             </a>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ $movieUrl }}">
-                                    {{ $movieTitle }}
+                                <a href="{{ $castUrl }}">
+                                    {{ $castName }}
                                 </a>
                             </h5>
                             <p class="card-text">
-                                {{ date($cfg['format_date'], strtotime($rec['release_date'])) }}
+                                {{ $rec['character'] }}
                             </p>
                         </div>
                     </div>
                     @php($no++)
                     @empty
                     <div class="alert alert-danger">
-                        Data belum Tersedia.
+                        We don't have any cast added to this movie. You can help by adding some!
                     </div>
                     @endforelse
                 </div>

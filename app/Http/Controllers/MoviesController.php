@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Models\Movies;
-use App\Models\Home;
 
 class MoviesController extends BaseController
 {
@@ -16,13 +15,13 @@ class MoviesController extends BaseController
     public function detail(string $uid): View
     {
         $cfg = $this->getConfigApp();
-        $model = new Movies();
-        $detail = $model->getMovieDetail($uid);
+        $movie = new Movies();
+        $detail = $movie->getMovieDetail($uid);
         $runtime = $this->getMovieRuntime($detail);
         $score = $this->getMovieScore($detail);
         $origin = $this->getMovieOrigin($detail);
         $genres = $this->getMovieGenres($detail);
-        $nowplaying = (new Home())->getMovieNowPlaying();
+        $topcast = $movie->getMovieTopCast($uid);
         $data = compact(
             'cfg',
             'detail',
@@ -30,7 +29,7 @@ class MoviesController extends BaseController
             'score',
             'origin',
             'genres',
-            'nowplaying'
+            'topcast'
         );
 
         return view('movies/detail', $data);

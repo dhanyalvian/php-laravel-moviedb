@@ -16,12 +16,13 @@
                 Now Playing Movies
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
-            
+
             <div class="row p-2">
                 @php($no = 1)
                 @forelse ($nowplaying['results'] as $rec)
                 @if($no > $max) @continue @endif
-                @php($movieUrl = url('/movies/' . $rec['id']))
+                @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
+                @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
                 @php($movieTitle = $rec['title'])
                 <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
@@ -60,7 +61,8 @@
                 @php($no = 1)
                 @forelse ($popular['results'] as $rec)
                 @if($no > $max) @continue @endif
-                @php($movieUrl = url('/movies/' . $rec['id']))
+                @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
+                @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
                 @php($movieTitle = $rec['title'])
                 <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
@@ -94,12 +96,13 @@
                 Top Rated Movies
                 <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
             </h2>
-            
+
             <div class="row p-2">
                 @php($no = 1)
                 @forelse ($toprated['results'] as $rec)
                 @if($no > $max) @continue @endif
-                @php($movieUrl = url('/movies/' . $rec['id']))
+                @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
+                @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
                 @php($movieTitle = $rec['title'])
                 <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">
@@ -138,7 +141,8 @@
                 @php($no = 1)
                 @forelse ($upcoming['results'] as $rec)
                 @if($no > $max) @continue @endif
-                @php($movieUrl = url('/movies/' . $rec['id']))
+                @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
+                @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
                 @php($movieTitle = $rec['title'])
                 <div class="card d-flex flex-wrap align-items-left">
                     <div class="card-img">

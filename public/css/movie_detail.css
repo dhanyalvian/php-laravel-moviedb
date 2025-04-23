@@ -1,8 +1,10 @@
 main.movies-detail .flex-row .card {
-    min-width: 302px;
-    width: 302px;
     border: 1px solid #a0a0a0;
     border-radius: 10px;
+    width: 302px;
+    min-width: 302px;
+    height: 486px;
+    min-height: 486px;
 }
 
 main.movies-detail .flex-row .card .card-img {
@@ -23,13 +25,13 @@ main.movies-detail .information {
 }
 
 main.movies-detail .information .info-part .btn-outline-secondary:first-child {
-    border-radius: 10px;
+    border-radius: 6px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 main.movies-detail .information .info-part .btn-outline-secondary:last-child {
-    border-radius: 10px;
+    border-radius: 6px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -58,20 +60,24 @@ main.movies-detail .information .action {
 }
 
 main.movies-detail .information .action .btn-group a.btn-outline-secondary:first-child {
-    border-radius: 10px;
+    border-radius: 6px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 main.movies-detail .information .action .btn-group a.btn-outline-secondary:last-child {
-    border-radius: 10px;
+    border-radius: 6px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;   
 }
 
+main.movies-detail .information .action a {
+    padding: 10px 20px;
+}
+
 main.movies-detail .information .action a>span {
-    font-size: 20px;
-    padding: 10px;
+    font-size: 16px;
+    /* padding: 10px; */
 }
 
 main.movies-detail .information .overview {
@@ -82,4 +88,82 @@ main.movies-detail .information .overview p {
     font-weight: normal;
     font-size: 16px;
     margin-left: 2px;
+}
+
+main.movies-detail .information .others {
+    margin-top: 25px;
+}
+main.movies-detail .information .others>div {
+    margin-bottom: 20px;
+}
+
+main.movies-detail .information .others h5 {
+    margin-bottom: 2px;
+}
+
+main.movies-detail .information .others p {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.top-cast {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.top-cast .row .card {
+    margin: 10px auto;
+    border: 1px solid #a0a0a0;
+    padding: 0;
+    border-radius: 10px;
+    width: 140px;
+}
+
+.top-cast .row .card:first-child {
+    margin-left: 0 !important;
+}
+
+.top-cast .row .card:last-child {
+    margin-right: 0 !important;
+}
+
+.top-cast .row .card .card-img,
+.top-cast .row .card .card-img img,
+.top-cast .row .card .card-img svg {
+    width: 138px;
+    height: 175px;
+}
+
+.top-cast .row .card .card-img,
+.top-cast .row .card .card-img-top {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.top-cast .row .card .card-body {
+    border-top: 1px solid #a0a0a0;
+    min-height: 66px;
+    padding: 5px 10px;
+}
+
+.top-cast .row .card .card-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.top-cast .row .card .card-title a {
+    color: rgb(33, 37, 41);
+    text-decoration: none;
+}
+
+.top-cast .row .card .card-title a:hover {
+    text-decoration: underline;
+}
+
+.top-cast .row .card .card-text {
+    font-size: 14px;
+    font-weight: normal;
 }

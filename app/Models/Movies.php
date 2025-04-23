@@ -10,4 +10,11 @@ class Movies extends Tmdbapi
 
         return $this->get($ep);
     }
+    
+    public function getMovieTopCast(string $uid): array
+    {
+        $ep = 'movie/' . $uid.'/credits';
+
+        return $this->get($ep);
+    }
 }
