@@ -3,6 +3,8 @@
 
     <head>
         @include('layouts.head')
+        <title>Movie Database</title>
+        <link href="{{ asset('css/movie.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     </head>
 
@@ -14,7 +16,8 @@
             <div class="container">
                 <h2>
                     Now Playing Movies
-                    <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
+                    <a href="{{ url('/movies/now-playing') }}"
+                        class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
@@ -54,7 +57,8 @@
             <div class="container">
                 <h2>
                     Popular Movies
-                    <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
+                    <a href="{{ url('/movies/popular') }}"
+                        class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
@@ -94,7 +98,8 @@
             <div class="container">
                 <h2>
                     Top Rated Movies
-                    <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
+                    <a href="{{ url('/movies/top-rated') }}"
+                        class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
@@ -134,7 +139,8 @@
             <div class="container">
                 <h2>
                     Upcoming Movies
-                    <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
+                    <a href="{{ url('/movies/upcoming') }}"
+                        class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">

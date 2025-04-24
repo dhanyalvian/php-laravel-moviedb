@@ -3,6 +3,7 @@
 
     <head>
         @include('layouts.head')
+        <title>Movie Database - {{ $detail['title'] }}</title>
         <link href="{{ asset('css/movie_detail.css') }}" rel="stylesheet">
     </head>
 
@@ -109,7 +110,8 @@
                     <div class="card d-flex flex-wrap align-items-left">
                         <div class="card-img">
                             <a href="{{ $castUrl }}">
-                                <img data-original="{{ $photoProfile }}" class="card-img-top lazyload" alt="{{ $castName }}">
+                                <img data-original="{{ $photoProfile }}" class="card-img-top lazyload"
+                                    alt="{{ $castName }}">
                             </a>
                         </div>
                         <div class="card-body">

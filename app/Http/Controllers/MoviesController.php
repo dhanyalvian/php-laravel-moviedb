@@ -2,14 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
+use Illuminate\View\View,
+    Illuminate\Http\Request;
 use App\Models\Movies;
 
 class MoviesController extends BaseController
 {
-    public function list(): view
+    protected function getModel()
     {
-        return view('movies/list');
+        return new Movies();
+    }
+    
+    protected function list(string $title, string $path, array $records)
+    {
+        $cfg = $this->getConfigApp();
+        $maxpage = 500;
+        $data = compact(
+            'cfg',
+            'maxpage',
+            'title',
+            'path',
+            'records'
+        );
+        
+        return view('movies/list', $data);
+    }
+
+    public function nowplaying(Request $req): view
+    {
+        $title = 'Now Playing';
+        $path = 'now-playing';
+        $model = $this->getModel();
+        $records = $model->getMovieNowPlaying($this->getPage($req));
+        
+        return $this->list($title, $path, $records);
+    }
+    
+    public function popular(Request $req): view
+    {
+        $title = 'Popular';
+        $path = 'popular';
+        $model = $this->getModel();
+        $records = $model->getMoviePopular($this->getPage($req));
+        
+        return $this->list($title, $path, $records);
+    }
+    
+    public function toprated(Request $req): view
+    {
+        $title = 'Top Rated';
+        $path = 'top-rated';
+        $model = $this->getModel();
+        $records = $model->getMovieTopRated($this->getPage($req));
+        
+        return $this->list($title, $path, $records);
+    }
+    
+    public function upcoming(Request $req): view
+    {
+        $title = 'Upcoming';
+        $path = 'upcoming';
+        $model = $this->getModel();
+        $records = $model->getMovieUpcoming($this->getPage($req));
+        
+        return $this->list($title, $path, $records);
     }
 
     public function detail(string $uid): View
@@ -43,20 +99,20 @@ class MoviesController extends BaseController
 
         return $hours . "h " . $min . "m";
     }
-    
+
     private function getMovieScore(array $detail): int
     {
         return round($detail['vote_average'] * 10, 0);
     }
-    
+
     private function getMovieOrigin(array $detail): string
     {
         $result = "";
-        
+
         if ($detail['origin_country']) {
             $result = $detail['origin_country'][0];
         }
-        
+
         return $result;
     }
 
@@ -64,15 +120,15 @@ class MoviesController extends BaseController
     {
         $result = "";
         $data = [];
-        
+
         foreach ($detail['genres'] as $genre) {
             $data[] = $genre['name'];
         }
-        
+
         if ($data) {
             $result = implode(', ', $data);
         }
-        
+
         return $result;
     }
 }

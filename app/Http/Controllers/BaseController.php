@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class BaseController extends Controller
 {
     protected function getConfigApp(): array
@@ -14,5 +16,10 @@ class BaseController extends Controller
             'format_date' => env('FORMAT_DATE', ''),
             'format_year' => env('FORMAT_YEAR', ''),
         ];
+    }
+    
+    protected function getPage(Request $req): int
+    {
+        return $req->input('p') ?? 1;
     }
 }

@@ -21,5 +21,8 @@ use App\Http\Controllers\HomeController,
 // });
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/movies', [MoviesController::class, 'list']);
+Route::get('/movies/now-playing', [MoviesController::class, 'nowplaying']);
+Route::get('/movies/popular', [MoviesController::class, 'popular']);
+Route::get('/movies/top-rated', [MoviesController::class, 'toprated']);
+Route::get('/movies/upcoming', [MoviesController::class, 'upcoming']);
 Route::get('/movies/{uid}', [MoviesController::class, 'detail']);
