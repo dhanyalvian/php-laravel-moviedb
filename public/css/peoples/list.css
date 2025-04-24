@@ -1,0 +1,123 @@
+.peoples-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.peoples-list h2 {
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-bottom: 0;
+}
+
+.peoples-list .container>.row.p-2 {
+    margin-left: -7px;
+    margin-right: -7px;
+}
+
+.peoples-list .row .card {
+    margin: 10px 12.78px;
+    border: 1px solid #a0a0a0;
+    padding: 0;
+    border-radius: 10px;
+    width: 140px;
+}
+
+.peoples-list .row .card:first-child {
+    margin-left: 0;
+}
+
+.peoples-list .row .card:last-child {
+    margin-right: 0;
+}
+
+@media (min-width: 800px) and (max-width: 1279px) {
+    .peoples-list .row .card {
+        margin: 10px 23.1px;
+    }
+
+    .peoples-list .row .card:nth-child(4n+1) {
+        margin-left: 0;
+    }
+
+    .peoples-list .row .card:nth-child(4n) {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1500px) {
+    .peoples-list .row .card {
+        margin: 10px 11.58px;
+    }
+
+    .peoples-list .row .card:nth-child(7n+1) {
+        margin-left: 0;
+    }
+    
+    .peoples-list .row .card:nth-child(7n+1):not(:first-child) {
+        /* display: none !important; */
+    }
+
+    .peoples-list .row .card:nth-child(7n) {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1920px) {
+    .peoples-list .row .card {
+        margin: 10px 12.78px;
+        margin-bottom: calc((12.78px * 2) - 10px);
+    }
+
+    .peoples-list .row .card:nth-child(8n+1) {
+        margin-left: 0;
+    }
+
+    .peoples-list .row .card:nth-child(8n+1):not(:first-child) {
+        /* display: none !important; */
+    }
+
+    .peoples-list .row .card:nth-child(8n) {
+        margin-right: 0;
+    }
+}
+
+.peoples-list .row .card .card-img,
+.peoples-list .row .card .card-img img,
+.peoples-list .row .card .card-img svg {
+    width: 138px;
+    height: 175px;
+}
+
+.peoples-list .row .card .card-img,
+.peoples-list .row .card .card-img-top {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.peoples-list .row .card .card-body {
+    border-top: 1px solid #a0a0a0;
+    padding: 5px 10px;
+}
+
+.peoples-list .row .card .card-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.peoples-list .row .card .card-title a {
+    color: rgb(33, 37, 41);
+    text-decoration: none;
+}
+
+.peoples-list .row .card .card-title a:hover {
+    text-decoration: underline;
+}
+
+.peoples-list .row .card .card-text {
+    font-size: 14px;
+    font-weight: normal;
+}

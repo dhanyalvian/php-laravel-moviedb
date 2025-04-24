@@ -4,7 +4,7 @@
     <head>
         @include('layouts.head')
         <title>Movie Database</title>
-        <link href="{{ asset('css/movie.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/movies.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     </head>
 
@@ -12,7 +12,7 @@
         @include('layouts.header')
         @php($max = 6)
 
-        <main class="movie-list">
+        <main class="movies-list">
             <div class="container">
                 <h2>
                     Now Playing Movies

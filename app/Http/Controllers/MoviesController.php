@@ -13,7 +13,7 @@ class MoviesController extends BaseController
         return new Movies();
     }
     
-    protected function list(string $title, string $path, array $records)
+    protected function generateList(string $title, string $path, array $records): view
     {
         $cfg = $this->getConfigApp();
         $maxpage = 500;
@@ -35,7 +35,7 @@ class MoviesController extends BaseController
         $model = $this->getModel();
         $records = $model->getMovieNowPlaying($this->getPage($req));
         
-        return $this->list($title, $path, $records);
+        return $this->generateList($title, $path, $records);
     }
     
     public function popular(Request $req): view
@@ -45,7 +45,7 @@ class MoviesController extends BaseController
         $model = $this->getModel();
         $records = $model->getMoviePopular($this->getPage($req));
         
-        return $this->list($title, $path, $records);
+        return $this->generateList($title, $path, $records);
     }
     
     public function toprated(Request $req): view
@@ -55,7 +55,7 @@ class MoviesController extends BaseController
         $model = $this->getModel();
         $records = $model->getMovieTopRated($this->getPage($req));
         
-        return $this->list($title, $path, $records);
+        return $this->generateList($title, $path, $records);
     }
     
     public function upcoming(Request $req): view
@@ -65,7 +65,7 @@ class MoviesController extends BaseController
         $model = $this->getModel();
         $records = $model->getMovieUpcoming($this->getPage($req));
         
-        return $this->list($title, $path, $records);
+        return $this->generateList($title, $path, $records);
     }
 
     public function detail(string $uid): View
@@ -78,6 +78,7 @@ class MoviesController extends BaseController
         $origin = $this->getMovieOrigin($detail);
         $genres = $this->getMovieGenres($detail);
         $topcast = $movie->getMovieTopCast($uid);
+        $recommendations = $movie->getMovieRecommendations($uid);
         $data = compact(
             'cfg',
             'detail',
@@ -85,7 +86,8 @@ class MoviesController extends BaseController
             'score',
             'origin',
             'genres',
-            'topcast'
+            'topcast',
+            'recommendations'
         );
 
         return view('movies/detail', $data);

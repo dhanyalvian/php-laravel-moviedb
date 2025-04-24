@@ -1,0 +1,16 @@
+.mini-detail {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.mini-detail .movie-img {
+    border: 1px solid #a0a0a0;
+}
+
+.mini-detail .movie-title {
+    margin-left: 20px;
+}
+
+.peoples-list {
+    margin-bottom: 0;
+}

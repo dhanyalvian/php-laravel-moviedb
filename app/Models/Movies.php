@@ -49,4 +49,11 @@ class Movies extends Tmdbapi
 
         return $this->get($ep);
     }
+    
+    public function getMovieRecommendations(string $uid): array
+    {
+        $ep = 'movie/' . $uid . '/recommendations';
+
+        return $this->get($ep);
+    }
 }

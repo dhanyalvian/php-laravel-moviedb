@@ -4,15 +4,15 @@
     <head>
         @include('layouts.head')
         <title>Movie Database - {{ $title }}</title>
-        <link href="{{ asset('css/movie.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/movie_list.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/movies.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/movies/list.css') }}" rel="stylesheet">
     </head>
 
     <body>
         @include('layouts.header')
         @php($max = 20)
 
-        <main class="movie-list">
+        <main class="movies-list">
             <div class="container">
                 <h2>
                     {{ $title }} Movies
@@ -22,8 +22,8 @@
                     @php($no = 1)
                     @forelse ($records['results'] as $rec)
                     @if($no > $max) @continue @endif
-                    @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
-                    @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
+                    @php($movieSlug = \Illuminate\Support\Str::slug($rec['title'], '-'))
+                    @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $movieSlug))
                     @php($movieTitle = $rec['title'])
                     <div class="card d-flex flex-wrap align-items-left">
                         <div class="card-img">
