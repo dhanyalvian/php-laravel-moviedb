@@ -1,17 +1,21 @@
-@media (min-width: 800px) and (max-width: 1279px) {
+@media screen and (min-width: 800px) and (max-width: 1279px) {
     main.movie-list {
         padding-bottom: 39.7px;
     }
 }
 
-@media (min-width: 1280px) and (max-width: 1500px) {
+@media screen and (min-width: 1280px) and (max-width: 1399px) {
     main.movie-list {
         padding-bottom: 27.38px;;
     }
 }
 
-@media (min-width: 1500px) and (max-width: 1920px) {
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
     main.movie-list {
         padding-bottom: 21.89px;
     }
+}
+
+.movies-list .pagination {
+    margin-bottom: 30px;
 }

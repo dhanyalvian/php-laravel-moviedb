@@ -4,68 +4,54 @@
     <head>
         @include('layouts.head')
         <title>Movie Database - {{ $title }}</title>
-        <link href="{{ asset('css/movies.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/movies/list.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/casts.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/peoples/list.css') }}" rel="stylesheet">
     </head>
 
     <body>
         @include('layouts.header')
-        @php($max = 20)
 
-        <main class="movies-list">
+        <main class="peoples-list">
             <div class="container">
                 <h2>
-                    {{ $title }} Movies
+                    {{ $title }} Peoples
                 </h2>
 
                 <div class="row p-2">
                     @php($no = 1)
                     @forelse ($records['results'] as $rec)
-                    @if($no > $max) @continue @endif
-                    @php($movieSlug = \Illuminate\Support\Str::slug($rec['title'], '-'))
-                    @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $movieSlug))
-                    @php($movieTitle = $rec['title'])
+                    @php($castUrl = url('/movies/' . $rec['id']))
+                    @php($castName = $rec['name'])
+                    @php($photoProfile = $rec['profile_path'] ? $cfg['url_img_profile'] . $rec['profile_path'] : '')
                     <div class="card d-flex flex-wrap align-items-left">
                         <div class="card-img">
-                            <a href="{{ $movieUrl }}">
-                                <img data-original="{{ $cfg['url_img_thumbnail'] . $rec['poster_path'] }}"
-                                    class="card-img-top lazyload" alt="{{ $movieTitle }}">
+                            <a href="{{ $castUrl }}">
+                                <img data-original="{{ $photoProfile }}" class="card-img-top lazyload"
+                                    alt="{{ $castName }}">
                             </a>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="{{ $movieUrl }}">
-                                    {{ $movieTitle }}
+                                <a href="{{ $castUrl }}">
+                                    {{ $castName }}
                                 </a>
                             </h5>
                             <p class="card-text">
-                                {{ date($cfg['format_date'], strtotime($rec['release_date'])) }}
+                                {{ $rec['original_name'] }}
                             </p>
                         </div>
                     </div>
                     @php($no++)
                     @empty
                     <div class="alert alert-danger">
-                        Data belum Tersedia.
+                        We don't have any cast added to this movie. You can help by adding some!
                     </div>
                     @endforelse
                 </div>
 
-                <!-- <div class="pagination d-grid gap-2">
-                    @php($currPage = $records['page'])
-                    @php($lastPage = $records['total_pages'] > $maxpage ? $maxpage : $records['total_pages'])
-                    @php($nextPage = $currPage + 1)
-                    <button class="btn btn-outline-secondary rounded-pill"
-                        type="button"
-                        data-current-page="{{ $currPage }}"
-                        data-next-page="{{ $nextPage }}">
-                        Load more
-                    </button>
-                </div> -->
-
                 <nav aria-label="page-navigation">
                     <ul class="pagination justify-content-center">
-                        @php($paginationUrl = url('/movies/' . $path . '?p='))
+                        @php($paginationUrl = url('/peoples/' . $path . '?p='))
                         @php($currPage = $records['page'])
                         @php($lastPage = $records['total_pages'] > $maxpage ? $maxpage : $records['total_pages'])
 

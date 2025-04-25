@@ -111,3 +111,23 @@ main.movies-detail .information .others p {
     font-weight: normal;
     font-size: 16px;
 }
+
+@media screen and (min-width: 1280px) and (max-width: 1399px) {
+    .peoples-list .row .card:nth-child(7n+1):not(:first-child) {
+        display: none !important;
+    }
+    
+    .movies-list .row .card:nth-child(5n+1):not(:first-child) {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
+    .peoples-list .row .card:nth-child(8n+1):not(:first-child) {
+        display: none !important;
+    }
+    
+    .movies-list .row .card:nth-child(6n+1):not(:first-child) {
+        display: none !important;
+    }
+}

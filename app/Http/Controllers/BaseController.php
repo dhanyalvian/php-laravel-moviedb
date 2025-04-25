@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use function Laravel\Prompts\select;
 
 class BaseController extends Controller
 {
+    const MAX_PAGE = 500;
+    
     protected function getConfigApp(): array
     {
         $tmdbUrlMedia = env('TMDB_URL_MEDIA');
@@ -22,5 +25,10 @@ class BaseController extends Controller
     protected function getPage(Request $req): int
     {
         return $req->input('p') ?? 1;
+    }
+    
+    protected function getPageMax(): int
+    {
+        return self::MAX_PAGE;
     }
 }

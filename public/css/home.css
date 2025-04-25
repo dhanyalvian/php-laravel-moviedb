@@ -1,18 +1,18 @@
-@media (min-width: 1280px) and (max-width: 1500px) {
-    main .row .card:nth-child(5n+1):not(:first-child) {
+@media screen and (min-width: 1280px) and (max-width: 1399px) {
+    .movies-list .row .card:nth-child(5n+1):not(:first-child) {
         display: none !important;
     }
 }
 
-@media (min-width: 1500px) and (max-width: 1920px) {
-    main .row .card:nth-child(6n+1):not(:first-child) {
+@media screen and (min-width: 1400px) and (max-width: 1920px) {
+    .movies-list .row .card:nth-child(6n+1):not(:first-child) {
         display: none !important;
     }
 }
 
-main.movie-list .container { 
+/* main.movies-list .container { 
     padding-bottom: 30px;
-}
+} */
 
 main .row .card {
     margin-bottom: 0;

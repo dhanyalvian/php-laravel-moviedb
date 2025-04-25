@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController,
     App\Http\Controllers\MoviesController,
+    App\Http\Controllers\PeoplesController,
     App\Http\Controllers\CastsController;
 
 /*
@@ -28,3 +29,5 @@ Route::get('/movies/top-rated', [MoviesController::class, 'toprated']);
 Route::get('/movies/upcoming', [MoviesController::class, 'upcoming']);
 Route::get('/movies/{uid}', [MoviesController::class, 'detail']);
 Route::get('/movies/{uid}/casts', [CastsController::class, 'list']);
+
+Route::get('/peoples/popular', [PeoplesController::class, 'popular']);

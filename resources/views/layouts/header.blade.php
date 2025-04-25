@@ -11,7 +11,7 @@
                 <ul id="nav-href" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link px-2 link-secondary">Movies</a></li>
                     <li><a href="#" class="nav-link px-2 link-body-emphasis">TV Shows</a></li>
-                    <li><a href="#" class="nav-link px-2 link-body-emphasis">People</a></li>
+                    <li><a href="{{ url('/peoples/popular') }}" class="nav-link px-2 link-body-emphasis">People</a></li>
                 </ul>
             </div>
 
@@ -27,6 +27,16 @@
                     </div>
                 </form>
             </div>
+            
+            <div class="col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 rounded-pill">
+                screen resolution: <span id="screen-resolution"></span>px
+            </div>
+            
+            <script type="text/javascript">
+                // let screenResolution = window.screen.width;
+                let screenResolution = window.innerWidth;
+                document.getElementById("screen-resolution").textContent = `${screenResolution}`;
+            </script>
 
             <div class="nav-lang">
                 <a href="#">
