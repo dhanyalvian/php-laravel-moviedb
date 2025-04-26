@@ -22,6 +22,11 @@ class BaseController extends Controller
         ];
     }
     
+    protected function getUrlMedia(): string
+    {
+        return env('TMDB_URL_MEDIA', '');
+    }
+    
     protected function getPage(Request $req): int
     {
         return $req->input('p') ?? 1;

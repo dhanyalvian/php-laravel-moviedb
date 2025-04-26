@@ -15,7 +15,7 @@ class PeoplesController extends BaseController
     
     public function popular(Request $req): view
     {
-        $title = 'Popular';
+        $title = 'Popular Peoples';
         $path = 'popular';
         $page = $this->getPage($req);
         $model = $this->getModel();
