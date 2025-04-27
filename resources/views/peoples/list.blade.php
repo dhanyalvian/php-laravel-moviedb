@@ -16,8 +16,10 @@
             <h2>
                 {{ $title }}
             </h2>
+            
+            <div class="row p-2"></div>
 
-            <div class="row p-2">
+            {{-- <div class="row p-2">
                 @php($no = 1)
                 @forelse ($records['results'] as $rec)
                 @php($castUrl = url('/movies/' . $rec['id']))
@@ -47,13 +49,13 @@
                     We don't have any cast added to this movie. You can help by adding some!
                 </div>
                 @endforelse
-            </div>
+            </div> --}}
 
-            <div class="pagination d-grid gap-2">
+            <div id="page-nav" class="pagination d-grid gap-2 d-none">
                 @php($currPage = $records['page'])
                 @php($lastPage = $records['total_pages'] > $maxpage ? $maxpage : $records['total_pages'])
                 @php($nextPage = $currPage + 1)
-                <button id="more-page" class="pagination-more btn btn-outline-secondary rounded-pill" type="button"
+                <button id="more-page-btn" class="pagination-more btn btn-outline-secondary rounded-pill" type="button"
                     data-current-page="{{ $currPage }}" data-next-page="{{ $nextPage }}">
                     more
                 </button>
@@ -110,36 +112,58 @@
     @include('layouts.script')
 
     <script type="text/javascript">
-        $('#more-page').click(function (e) {
-            e.preventDefault();
-
-            var moreBtn = $(this);
-            let pageUrl = "{{ url('/api/peoples') }}";
-            let pageNext = moreBtn.attr('data-next-page');
+        $(document).ready(function() {
+            getPeopleRecords(1);
+        });
+        
+        $('#more-page-btn').click(function (e) {
+            if ($(this).prop('disabled')) {
+                e.preventDefault();
+                return;
+            }
+            
+            $(this).prop('disabled', true);
+            
+            let pageNext = $(this).attr('data-next-page');
 
             $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="margin-right: 5px;"></span><span class="sr-only">loading...</span>');
 
+            getPeopleRecords(pageNext);
+            
+            e.preventDefault();
+        });
+        
+        function getPeopleRecords(pageNext) {
+            let pageNavId = '#page-nav';
+            let moreBtnId = '#more-page-btn';
+            let pageUrl = "{{ url('/api/peoples') }}";
+            
             $.ajax({
                 type: 'GET',
                 url: pageUrl,
                 data: {
                     p: pageNext,
                 },
+                async: true,
                 contentType: 'application/json',
                 success: (response) => {
                     $.each(response.data.records, function (index, rec) {
                         $(getPeopleCard(rec)).hide()
                             .appendTo('.peoples-list .container>.row.p-2')
-                            .fadeIn(1000);
+                            .fadeIn(2000);
                     });
-
-                    $(this).attr('data-current-page', response.data.page)
+                    
+                    $(moreBtnId).prop('disabled', false)
+                        .attr('data-current-page', response.data.page)
                         .attr('data-next-page', response.data.next)
                         .html('more');
+                    $(pageNavId).removeClass('d-none');
                 },
-                error: function (response) { }
+                error: function (response) {
+                    $(moreBtnId).prop('disabled', false);
+                }
             });
-        });
+        }
 
         function getPeopleCard(rec) {
             var profileName = rec.name;
@@ -151,7 +175,7 @@
             rslt += '<img data-original="' + profileImg + '" class="card-img-top lazyload" alt="' + profileName + '" src="' + profileImg + '">';
             rslt += '</a></div> <div class="card-body"><h5 class="card-title">';
             rslt += '<a href="' + profileUrl + '">' + profileName + '</a>';
-            rslt += '</h5><p class="card-text">' + profileName + '</p></div></div>';
+            rslt += '</h5><p class="card-text">' + rec.profile_known_for + '</p></div></div>';
 
             return rslt;
         }

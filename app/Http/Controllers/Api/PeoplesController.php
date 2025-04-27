@@ -35,6 +35,7 @@ class PeoplesController extends ApiController
                 env('TMDB_URL_IMG_PROFILE', ''),
                 $row['profile_path']
             );
+            $row['profile_known_for'] = $this->getProfileKnownFor($row['known_for']);
             $records[] = $row;
         }
 
@@ -47,5 +48,17 @@ class PeoplesController extends ApiController
             'total_records' => $result['total_results'],
             'records' => $records,
         ];
+    }
+
+    protected function getProfileKnownFor(array $rows): string
+    {
+        $result = [];
+
+        foreach ($rows as $row) {
+            $result[] = $row['media_type'] == 'movie' ? $row['title'] : $row['original_name'];
+
+        }
+
+        return implode(', ', $result);
     }
 }
