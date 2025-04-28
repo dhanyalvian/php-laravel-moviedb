@@ -18,4 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/peoples', App\Http\Controllers\Api\PeoplesController::class);
+Route::apiResource('/movies/popular', App\Http\Controllers\Api\Movies\PopularController::class);
+Route::apiResource('/movies/now-playing', App\Http\Controllers\Api\Movies\NowplayingController::class);
+Route::apiResource('/movies/top-rated', App\Http\Controllers\Api\Movies\TopratedController::class);
+Route::apiResource('/movies/upcoming', App\Http\Controllers\Api\Movies\UpcomingController::class);
+
+Route::apiResource('/peoples/popular', App\Http\Controllers\Api\Peoples\PopularController::class);

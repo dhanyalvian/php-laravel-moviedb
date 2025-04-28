@@ -17,18 +17,18 @@ class PeoplesController extends BaseController
     {
         $title = 'Popular Peoples';
         $path = 'popular';
-        $page = $this->getPage($req);
-        $model = $this->getModel();
-        $records = $model->getPeoplesPopular($page);
+        // $page = 1;
+        // $model = $this->getModel();
+        // $records = $model->getPeoplesPopular($page);
         
         $cfg = $this->getConfigApp();
-        $maxpage = $this->getPageMax();
+        // $maxpage = $this->getPageMax();
         $data = compact(
             'cfg',
-            'maxpage',
+            // 'maxpage',
             'title',
             'path',
-            'records'
+            // 'records'
         );
         
         return view('peoples/list', $data);

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Peoples;
 
 use Illuminate\Http\Request,
-Illuminate\Support\Str;
-use App\Models\PeoplesModel;
+    Illuminate\Support\Str;
+use App\Http\Controllers\Api\ApiController,
+    App\Models\PeoplesModel;
 
-class PeoplesController extends ApiController
+class PopularController extends ApiController
 {
     protected function getModel()
     {

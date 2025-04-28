@@ -15,14 +15,14 @@
         <main class="movies-list">
             <div class="container">
                 <h2>
-                    Now Playing Movies
-                    <a href="{{ url('/movies/now-playing') }}"
+                    Popular Movies
+                    <a href="{{ url('/movies/popular') }}"
                         class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
                     @php($no = 1)
-                    @forelse ($nowplaying['results'] as $rec)
+                    @forelse ($popular['results'] as $rec)
                     @if($no > $max) @continue @endif
                     @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
                     @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))
@@ -53,17 +53,17 @@
                     @endforelse
                 </div>
             </div>
-
+            
             <div class="container">
                 <h2>
-                    Popular Movies
-                    <a href="{{ url('/movies/popular') }}"
+                    Now Playing Movies
+                    <a href="{{ url('/movies/now-playing') }}"
                         class="link-more badge rounded-pill text-bg-info">more</a>
                 </h2>
 
                 <div class="row p-2">
                     @php($no = 1)
-                    @forelse ($popular['results'] as $rec)
+                    @forelse ($nowplaying['results'] as $rec)
                     @if($no > $max) @continue @endif
                     @php($slug = \Illuminate\Support\Str::slug($rec['title'], '-'))
                     @php($movieUrl = url('/movies/' . $rec['id'] . '-' . $slug))

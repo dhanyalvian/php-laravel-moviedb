@@ -11,4 +11,9 @@ class ApiController extends BaseController
     {
         return new ListResource($status, $message, $resource);
     }
+    
+    protected function getResource(array $result): array
+    {
+        return $result;
+    }
 }

@@ -13,6 +13,7 @@ class BaseController extends Controller
     {
         $tmdbUrlMedia = env('TMDB_URL_MEDIA');
         return [
+            'page_title' => 'MovieDb',
             'url_img_thumbnail' => $tmdbUrlMedia . env('TMDB_URL_IMG_THUMBNAIL', ''),
             'url_img_detail' => $tmdbUrlMedia . env('TMDB_URL_IMG_DETAIL', ''),
             'url_img_detail_mini' => $tmdbUrlMedia . env('TMDB_URL_IMG_DETAIL_MINI', ''),
