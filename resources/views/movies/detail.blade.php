@@ -11,7 +11,7 @@
 
 <body>
     @include('layouts.header')
-    @php($max = 8)
+    {{-- @php($max = 8) --}}
 
     <main class="movies-detail border-bottom">
         <div class="container">
@@ -94,8 +94,45 @@
             </div>
         </div>
     </main>
+    
+    <div id="top-cast" class="peoples-list border-bottom">
+        <div class="container">
+            @php($movieSlug = \Illuminate\Support\Str::slug($detail['title'], '-'))
+            @php($movieUid = $detail['id'] . '-' . $movieSlug)
+            @php($castUrl = url('/movies/' . $movieUid. '/casts'))
+            <h2>
+                Top Casts
+                <a href="{{ $castUrl }}"
+                    class="link-more badge rounded-pill text-bg-info"
+                    data-url="{{ url('/api/movies/' . $movieUid . '/casts') }}"
+                    data-limit="{{ $peopleMax }}">
+                    more
+                </a>
+            </h2>
+            
+            <div id="page-row" class="row p-2">
+                @for ($i = 1; $i <= $peopleMax; $i++)
+                    <div class="card card-placeholder d-flex flex-wrap align-items-left">
+                        <div class="card-img">
+                            <a href="">
+                                <img data-original="" class="card-img-top lazyload">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                                <span class="placeholder col-10"></span>
+                            </h5>
+                            <p class="card-text">
+                                <span class="placeholder col-8"></span>
+                            </p>
+                        </div>
+                    </div>
+                @endfor
+            </div>
+        </div>
+    </div>
 
-    <div class="top-cast peoples-list border-bottom">
+    {{-- <div class="top-cast peoples-list border-bottom">
         <div class="container">
             @php($movieSlug = \Illuminate\Support\Str::slug($detail['title'], '-'))
             @php($castUrl = url('/movies/' . $detail['id'] . '-' . $movieSlug . '/casts'))
@@ -107,7 +144,7 @@
             <div class="row p-2">
                 @php($no = 1)
                 @forelse ($topcast['cast'] as $rec)
-                @if($no > $max) @continue @endif
+                @if($no > $peopleMax) @continue @endif
                 @php($castUrl = url('/movies/' . $rec['id']))
                 @php($castName = $rec['name'])
                 @php($photoProfile = $rec['profile_path'] ? $cfg['url_img_profile'] . $rec['profile_path'] : '')
@@ -137,9 +174,9 @@
                 @endforelse
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <div class="movies-recommendations movies-list">
+    {{-- <div id="movies-recommendations" class=" movies-list">
         <div class="container">
             <h2>
                 Recommendations
@@ -179,10 +216,36 @@
                 @endforelse
             </div>
         </div>
+    </div> --}}
+    
+    <div id="recommendations" class="page-block movies-list lazyload">
+        <div class="container">
+            <h2>
+                Recommendations
+            </h2>
+
+            <div id="page-row" class="row p-2">
+                @include('movies.placeholder')
+            </div>
+            
+            <div id="page-nav" class="pagination d-grid gap-2 d-none">
+                <button id="more-page-btn"
+                    class="pagination-more btn btn-outline-secondary rounded-pill"
+                    type="button"
+                    data-url="{{ url('/api/movies/' . $uid . '/recommendations') }}"
+                    data-current-page="1"
+                    data-next-page="1"
+                    data-limit="{{ $movieMax }}">
+                    more
+                </button>
+            </div>
+        </div>
     </div>
 
     @include('layouts.footer')
     @include('layouts.script')
+    
+    <script src="{{ asset('js/movies/detail.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

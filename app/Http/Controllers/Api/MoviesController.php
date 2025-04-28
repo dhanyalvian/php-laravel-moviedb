@@ -16,9 +16,15 @@ class MoviesController extends ApiController
     
     protected function getResource(array $result): array
     {
+        $no = 0;
+        $limit = $this->gLimit();
         $records = [];
 
         foreach ($result['results'] as $row) {
+            if ($no == $limit) {
+                break;
+            }
+            
             $row["movie_url"] = url('/movies/' . $row['id'] . '-' . Str::slug($row['title'], '-'));
             $row['movie_path'] = sprintf(
                 "%s%s%s",
@@ -28,6 +34,7 @@ class MoviesController extends ApiController
             );
             $row['movie_release_date'] = date(env('FORMAT_DATE', strtotime($row['release_date'])));
             $records[] = $row;
+            $no++;
         }
 
         $page = (int) $result['page'];

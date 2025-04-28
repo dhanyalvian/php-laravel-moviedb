@@ -22,5 +22,7 @@ Route::apiResource('/movies/popular', App\Http\Controllers\Api\Movies\PopularCon
 Route::apiResource('/movies/now-playing', App\Http\Controllers\Api\Movies\NowplayingController::class);
 Route::apiResource('/movies/top-rated', App\Http\Controllers\Api\Movies\TopratedController::class);
 Route::apiResource('/movies/upcoming', App\Http\Controllers\Api\Movies\UpcomingController::class);
+Route::apiResource('/movies/{uid}/casts', App\Http\Controllers\Api\Movies\CastController::class);
+Route::apiResource('/movies/{uid}/recommendations', App\Http\Controllers\Api\Movies\RecommendationsController::class);
 
 Route::apiResource('/peoples/popular', App\Http\Controllers\Api\Peoples\PopularController::class);

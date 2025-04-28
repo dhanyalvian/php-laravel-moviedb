@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\MoviesController;
 
 
-class PopularController extends MoviesController
+class RecommendationsController extends MoviesController
 {
-    public function index(Request $req)
+    public function index(string $uid, Request $req)
     {
         $this->sLimit($req);
-        $page = $this->getPage($req);
         $model = $this->getModel();
-        $result = $model->getMoviesPopular($page);
+        $result = $model->getMoviesRecommendation($uid);
         $resource = $this->getResource($result);
 
         return $this->respList(true, $resource);

@@ -10,10 +10,10 @@
     }
 }
 
-/* main.movies-list .container { 
-    padding-bottom: 30px;
-} */
-
 main .row .card {
     margin-bottom: 0;
+}
+
+.block-next {
+    padding-top: 0;;
 }

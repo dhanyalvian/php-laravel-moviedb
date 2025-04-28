@@ -14,6 +14,7 @@ class HomeController extends BaseController
     public function index(): View
     {
         $cfg = $this->getConfigApp();
+        $movieMax = 6;
         $model = new Home();
         $nowplaying = $model->getMovieNowPlaying();
         $popular = $model->getMoviePopular();
@@ -21,10 +22,11 @@ class HomeController extends BaseController
         $upcoming = $model->getMovieUpcoming();
         $data = compact(
             'cfg',
-            'nowplaying',
-            'popular',
-            'toprated',
-            'upcoming',
+            'movieMax',
+            // 'nowplaying',
+            // 'popular',
+            // 'toprated',
+            // 'upcoming',
         );
 
         return view('home', $data);

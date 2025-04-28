@@ -5,9 +5,9 @@
 <script type="text/javascript">
     const defaultFadeIn = 2000;
     
-    $(document).ready(function () {
-        $('img.lazyload').lazyload();
-    });
+    function lazyload() {
+        $('.lazyload').lazyload();
+    }
     
     function getMorePageLoader() {
         return '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="margin-right: 5px;"></span><span class="sr-only">loading...</span>';

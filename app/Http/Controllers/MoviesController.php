@@ -17,9 +17,11 @@ class MoviesController extends BaseController
     {
         $cfg = $this->getConfigApp();
         $maxpage = 500;
+        $movieMax = 6;
         $data = compact(
             'cfg',
             'maxpage',
+            'movieMax',
             'title',
             'path',
             'records'
@@ -71,23 +73,29 @@ class MoviesController extends BaseController
     public function detail(string $uid): View
     {
         $cfg = $this->getConfigApp();
+        $peopleMax = 8;
+        $movieMax = 6;
+        
         $movie = new Movies();
         $detail = $movie->getMovieDetail($uid);
         $runtime = $this->getMovieRuntime($detail);
         $score = $this->getMovieScore($detail);
         $origin = $this->getMovieOrigin($detail);
         $genres = $this->getMovieGenres($detail);
-        $topcast = $movie->getMovieTopCast($uid);
-        $recommendations = $movie->getMovieRecommendations($uid);
+        // $topcast = $movie->getMovieTopCast($uid);
+        // $recommendations = $movie->getMovieRecommendations($uid);
         $data = compact(
             'cfg',
             'detail',
+            'peopleMax',
+            'movieMax',
+            'uid',
             'runtime',
             'score',
             'origin',
             'genres',
-            'topcast',
-            'recommendations'
+            // 'topcast',
+            // 'recommendations'
         );
 
         return view('movies/detail', $data);

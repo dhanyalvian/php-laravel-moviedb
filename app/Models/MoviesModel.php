@@ -35,4 +35,18 @@ class MoviesModel extends Tmdbapi
 
         return $this->get($ep, $query);
     }
+    
+    public function getMovieTopCast(string $uid): array
+    {
+        $ep = 'movie/' . $uid . '/credits';
+
+        return $this->get($ep);
+    }
+    
+    public function getMoviesRecommendation(string $uid): array
+    {
+        $ep = sprintf("movie/%s/recommendations", $uid);
+
+        return $this->get($ep);
+    }
 }

@@ -10,6 +10,7 @@ class TopratedController extends MoviesController
 {
     public function index(Request $req)
     {
+        $this->sLimit($req);
         $page = $this->getPage($req);
         $model = $this->getModel();
         $result = $model->getMoviesTopRated($page);
