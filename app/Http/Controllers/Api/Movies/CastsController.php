@@ -6,7 +6,7 @@ use Illuminate\Http\Request,
     Illuminate\Support\Str;
 use App\Http\Controllers\Api\MoviesController;
 
-class CastController extends MoviesController
+class CastsController extends MoviesController
 {
     public function index(string $uid, Request $req)
     {
@@ -25,7 +25,7 @@ class CastController extends MoviesController
         $records = [];
 
         foreach ($result['cast'] as $row) {
-            if ($no == $limit) {
+            if ($limit && $no == $limit) {
                 break;
             }
             

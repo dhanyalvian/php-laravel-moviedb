@@ -10,13 +10,14 @@ class CastsController extends MoviesController
     public function list(string $uid): view
     {
         $cfg = $this->getConfigApp();
+        $peopleMax = 8;
         $model = new Movies();
         $movie = $model->getMovieDetail($uid);
-        $casts = $model->getMovieTopCast($uid);
         $data = compact(
+            'uid',
             'cfg',
+            'peopleMax',
             'movie',
-            'casts'
         );
         
         return view('casts/list', $data);

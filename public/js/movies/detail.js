@@ -51,7 +51,7 @@ $(document).ready(function() {
         rslt += '<img data-original="' + profileImg + '" class="card-img-top lazyload" alt="' + profileName + '" src="' + profileImg + '">';
         rslt += '</a></div> <div class="card-body"><h5 class="card-title">';
         rslt += '<a href="' + profileUrl + '">' + profileName + '</a>';
-        rslt += '</h5><p class="card-text">' + rec.profile_known_for + '</p></div></div>';
+        rslt += '</h5><p class="card-text">' + rec.character + '</p></div></div>';
 
         return rslt;
     }

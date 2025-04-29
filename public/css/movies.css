@@ -55,6 +55,10 @@
     .movies-list .row .card:nth-child(5n) {
         margin-right: 0;
     }
+    
+    .movies-list .row .card-placeholder:nth-child(5n+1):not(:first-child) {
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1920px) {

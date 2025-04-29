@@ -22,12 +22,14 @@ class PeoplesController extends BaseController
         // $records = $model->getPeoplesPopular($page);
         
         $cfg = $this->getConfigApp();
+        $peopleMax = 8;
         // $maxpage = $this->getPageMax();
         $data = compact(
             'cfg',
             // 'maxpage',
             'title',
             'path',
+            'peopleMax',
             // 'records'
         );
         

@@ -18,26 +18,7 @@
             </h2>
             
             <div id="page-row" class="row p-2">
-                @for ($i = 1; $i <= 8; $i++)
-                    <div class="card card-placeholder d-flex flex-wrap align-items-left">
-                        <div class="card-img">
-                            <a href="">
-                                <img data-original="" class="card-img-top lazyload">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                                <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text">
-                                <span class="placeholder col-7"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-6"></span>
-                            </p>
-                        </div>
-                    </div>
-                @endfor
+                @include('peoples.placeholder')
             </div>
 
             <div id="page-nav" class="pagination d-grid gap-2 d-none">

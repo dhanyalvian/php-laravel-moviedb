@@ -26,14 +26,20 @@
         </div>
     </div>
 
-    <div class="casts peoples-list">
+    <div id="top-cast" class="casts peoples-list">
         <div class="container">
-            <h2>
-                Top Casts
-                <a href-"#" class="link-more badge rounded-pill text-bg-info">more</a>
-            </h2>
+            <h2>Top Casts</h2>
+            
+            <div class="link-more d-none"
+                data-url="{{ url('/api/movies/' . $uid . '/casts') }}"
+                data-limit="0">
+            </div>
+            
+            <div id="page-row" class="row p-2">
+                @include('peoples.placeholder')
+            </div>
 
-            <div class="row p-2">
+            {{-- <div class="row p-2">
                 @php($no = 1)
                 @forelse ($casts['cast'] as $rec)
                 @php($castUrl = url('/movies/' . $rec['id']))
@@ -63,12 +69,14 @@
                     We don't have any cast added to this movie. You can help by adding some!
                 </div>
                 @endforelse
-            </div>
+            </div> --}}
         </div>
     </div>
 
     @include('layouts.footer')
     @include('layouts.script')
+    
+    <script src="{{ asset('js/movies/casts.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

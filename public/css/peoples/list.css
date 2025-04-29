@@ -63,6 +63,10 @@
     .peoples-list .row .card:nth-child(7n) {
         margin-right: 0;
     }
+    
+    .peoples-list .row .card-placeholder:nth-child(7n+1):not(:first-child) {
+        display: none !important;
+    }
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1920px) {
