@@ -32,7 +32,7 @@ class MoviesController extends ApiController
                 env('TMDB_URL_IMG_THUMBNAIL', ''),
                 $row['poster_path']
             );
-            $row['movie_release_date'] = date(env('FORMAT_DATE', strtotime($row['release_date'])));
+            $row['movie_release_date'] = date(env('FORMAT_DATE'), strtotime($row['release_date']));
             $records[] = $row;
             $no++;
         }

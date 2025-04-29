@@ -7,7 +7,7 @@ const recommendNav = '#more-page-btn';
 $(document).ready(function() {
     lazyload();
     getPeopleRecords(topcastId, topcastNav, 0);
-    getMovieRecords(recommendId, recommendNav, 1, 0);
+    getMovieRecommendationRecords(recommendId, recommendNav, 1, 0);
     
     function getPeopleRecords(contentId, contentNav, fadeIn) {
         const pageUrl = $(contentNav).attr('data-url');
@@ -56,7 +56,7 @@ $(document).ready(function() {
         return rslt;
     }
     
-    function getMovieRecords(contentId, contentNav, pageNext, fadeIn) {
+    function getMovieRecommendationRecords(contentId, contentNav, pageNext, fadeIn) {
         const pageUrl = $(contentNav).attr('data-url');
         const limit = $(contentNav).attr('data-limit');
         
@@ -72,7 +72,7 @@ $(document).ready(function() {
             success: (response) => {
                 $(contentId + ' .card-placeholder').remove();
                 $.each(response.data.records, function (_, rec) {
-                    $(getMovieCard(rec)).hide()
+                    $(getMovieRecommendationCard(rec)).hide()
                         .appendTo(contentId + ' .container>.row.p-2')
                         .fadeIn(fadeIn);
                 });
@@ -89,7 +89,7 @@ $(document).ready(function() {
         });
     }
 
-    function getMovieCard(rec) {
+    function getMovieRecommendationCard(rec) {
         const title = rec.title;
         const img = rec.movie_path;
         const url = rec.movie_url;
