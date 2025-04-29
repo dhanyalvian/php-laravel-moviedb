@@ -16,10 +16,12 @@ class MoviesController extends BaseController
     protected function generateList(string $title, string $path, array $records): view
     {
         $cfg = $this->getConfigApp();
+        $nav = $this->getNavMenu('movies', $path);
         $maxpage = 500;
         $movieMax = 6;
         $data = compact(
             'cfg',
+            'nav',
             'maxpage',
             'movieMax',
             'title',
@@ -73,6 +75,7 @@ class MoviesController extends BaseController
     public function detail(string $uid): View
     {
         $cfg = $this->getConfigApp();
+        $nav = $this->getNavMenu('movies', '');
         $peopleMax = 8;
         $movieMax = 6;
         
@@ -86,6 +89,7 @@ class MoviesController extends BaseController
         // $recommendations = $movie->getMovieRecommendations($uid);
         $data = compact(
             'cfg',
+            'nav',
             'detail',
             'peopleMax',
             'movieMax',

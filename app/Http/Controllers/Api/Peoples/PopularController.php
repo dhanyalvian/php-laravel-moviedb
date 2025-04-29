@@ -30,13 +30,19 @@ class PopularController extends ApiController
 
         foreach ($result['results'] as $row) {
             $row["profile_url"] = url('/peoples/' . $row['id'] . '-' . Str::slug($row['name'], '-'));
-            $row['profile_path'] = sprintf(
-                "%s%s%s",
-                $this->getUrlMedia(),
-                env('TMDB_URL_IMG_PROFILE', ''),
-                $row['profile_path']
-            );
             $row['profile_known_for'] = $this->getProfileKnownFor($row['known_for']);
+            
+            if ($row['profile_path']) {
+                $row['profile_path'] = sprintf(
+                    "%s%s%s",
+                    $this->getUrlMedia(),
+                    env('TMDB_URL_IMG_PROFILE', ''),
+                    $row['profile_path']
+                );
+            } else {
+                $row['profile_path'] = '';
+            }
+            
             $records[] = $row;
         }
 

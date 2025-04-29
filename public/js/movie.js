@@ -39,7 +39,7 @@ function getMovieCard(rec) {
     let rslt = '<div class="card d-flex flex-wrap align-items-left">';
     rslt += '<div class="card-img">';
     rslt += '<a href="' + url + '">';
-    rslt += '<img data-original="' + img + '" class="card-img-top lazyload" alt="' + title + '" src="' + img + '">';
+    rslt += '<img data-original="' + img + '" class="card-img-top lazyload" src="' + img + '">';
     rslt += '</a></div> <div class="card-body"><h5 class="card-title">';
     rslt += '<a href="' + url + '">' + title + '</a>';
     rslt += '</h5><p class="card-text">' + rec.movie_release_date + '</p></div></div>';

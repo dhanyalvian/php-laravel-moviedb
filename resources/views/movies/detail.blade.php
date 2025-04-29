@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts.head')
-    <title>Movie Database - {{ $detail['title'] }}</title>
+    <title>{{ $cfg['page_title'] }} - {{ $detail['title'] }}</title>
     <link href="{{ asset('css/movies.css') }}" rel="stylesheet">
     <link href="{{ asset('css/peoples/list.css') }}" rel="stylesheet">
     <link href="{{ asset('css/movies/detail.css') }}" rel="stylesheet">

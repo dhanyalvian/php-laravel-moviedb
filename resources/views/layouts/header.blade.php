@@ -9,9 +9,25 @@
 
             <div class="nav-menu">
                 <ul id="nav-href" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 link-secondary">Movies</a></li>
-                    <li><a href="#" class="nav-link px-2 link-body-emphasis">TV Shows</a></li>
-                    <li><a href="{{ url('/peoples/popular') }}" class="nav-link px-2 link-body-emphasis">Peoples</a></li>
+                    @foreach ($nav['menu'] as $menu)
+                        @php($menuAct = ($nav['ep'] == $menu['path']) ? 'link-body-emphasis' : '')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-2 link-secondary dropdown-toggle {{ $menuAct }}"
+                                href="#"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ $menu['title'] }}
+                            </a>
+                            
+                            <ul class="dropdown-menu">
+                                @foreach ($menu['childs'] as $smenu)
+                                    @php($smenuAct = ($menuAct && ($nav['path'] == $smenu['path'])) ? 'active' : '')
+                                    <li><a class="dropdown-item {{ $smenuAct }}" href="{{ $smenu['url'] }}">{{ $smenu['title'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\Models\Home;
 
 class HomeController extends BaseController
 {
@@ -14,19 +13,13 @@ class HomeController extends BaseController
     public function index(): View
     {
         $cfg = $this->getConfigApp();
+        $nav = $this->getNavMenu('', '');
         $movieMax = 6;
-        $model = new Home();
-        $nowplaying = $model->getMovieNowPlaying();
-        $popular = $model->getMoviePopular();
-        $toprated = $model->getMovieTopRated();
-        $upcoming = $model->getMovieUpcoming();
+        
         $data = compact(
             'cfg',
+            'nav',
             'movieMax',
-            // 'nowplaying',
-            // 'popular',
-            // 'toprated',
-            // 'upcoming',
         );
 
         return view('home', $data);

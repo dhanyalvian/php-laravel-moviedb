@@ -16,17 +16,20 @@ class PeoplesController extends BaseController
     public function popular(Request $req): view
     {
         $title = 'Popular Peoples';
+        $ep = 'peoples';
         $path = 'popular';
         // $page = 1;
         // $model = $this->getModel();
         // $records = $model->getPeoplesPopular($page);
         
         $cfg = $this->getConfigApp();
+        $nav = $this->getNavMenu($ep, $path);
         $peopleMax = 8;
         // $maxpage = $this->getPageMax();
         $data = compact(
             'cfg',
             // 'maxpage',
+            'nav',
             'title',
             'path',
             'peopleMax',
