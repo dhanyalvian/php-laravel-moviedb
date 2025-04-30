@@ -21,7 +21,11 @@
             <div class="movie-title">
                 @php($backUrl = rtrim(Illuminate\Support\Facades\URL::current(), '/casts'))
                 <h2>{{ $movie['title'] }} ({{ date($cfg['format_year'], strtotime($movie['release_date'])) }})</h2>
-                <h5><a href="{{ $backUrl }}">&laquo; back to Detail</a></h5>
+                <h5>
+                    <span class="back2detail">
+                        &laquo; <a href="{{ $backUrl }}">back to Detail</a>
+                    </span>
+                </h5>
             </div>
         </div>
     </div>

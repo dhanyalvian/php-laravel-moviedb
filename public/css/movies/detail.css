@@ -126,7 +126,7 @@ main.movies-detail .information .others p {
     }
 }
 
-@media screen and (min-width: 1400px) and (max-width: 1920px) {
+@media screen and (min-width: 1400px) {
     .peoples-list .row .card:nth-child(8n+1):not(:first-child) {
         display: none !important;
     }

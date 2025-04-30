@@ -1,3 +1,13 @@
+.back2detail,
+.back2detail>a {
+    color: #666666;
+    text-decoration: none;
+}
+.back2detail>a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
 .mini-detail {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -6,7 +16,7 @@
 .mini-detail .movie-img {
     border: 1px solid #a0a0a0;
     border-radius: 5px;
-    
+
 }
 
 .mini-detail .movie-img img {

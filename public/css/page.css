@@ -31,8 +31,31 @@ a.link-more {
     font-size: 12px;
     text-decoration: none;
 }
+
 a.link-more:hover {
     cursor: pointer;
     color: #666666;
     text-decoration: underline;
+}
+
+.position-fixed.bottom-0.end-0.translate-middle {
+    transform: translate(-20%, -10%) !important;
+}
+
+.back2top {
+    display: none;
+}
+
+.back2top>.btn.btn-link {
+    color: #a0a0a0;
+    font-size: 40px;
+}
+
+.back2top>.btn.btn-link:hover {
+    color: #666666;
+}
+
+.back2top>.btn.btn-link>i {
+    background-color: white;
+    font-size: 40px;
 }
