@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\External;
 
 use Illuminate\Support\Facades\Http;
 
-class Tmdbapi
+class TmdbModel
 {
     protected $apiUrl = '';
     protected $headers = [];

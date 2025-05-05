@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Str;
 use App\Http\Controllers\Api\ApiController,
-    App\Models\MoviesModel;
+    App\Models\External\MovieModel;
 
 
-class MoviesController extends ApiController
+class MovieController extends ApiController
 {
     protected function getModel()
     {
-        return new MoviesModel();
+        return new MovieModel();
     }
-    
+
     protected function getResource(array $result): array
     {
         $no = 0;
@@ -24,7 +24,7 @@ class MoviesController extends ApiController
             if ($no == $limit) {
                 break;
             }
-            
+
             $row["movie_url"] = url('/movies/' . $row['id'] . '-' . Str::slug($row['title'], '-'));
             $row['movie_path'] = sprintf(
                 "%s%s%s",

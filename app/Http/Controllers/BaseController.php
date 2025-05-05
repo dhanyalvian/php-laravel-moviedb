@@ -68,6 +68,32 @@ class BaseController extends Controller
                     ],
                 ],
                 [
+                    'path' => 'tvs',
+                    'title' => 'TV Shows',
+                    'childs' => [
+                        [
+                            'path' => 'popular',
+                            'title' => 'Popular',
+                            'url' => url('/tvs/popular'),
+                        ],
+                        [
+                            'path' => 'airing-today',
+                            'title' => 'Airing Today',
+                            'url' => url('/tvs/airing-today'),
+                        ],
+                        [
+                            'path' => 'on-the-air',
+                            'title' => 'On The Air',
+                            'url' => url('/tvs/on-the-air'),
+                        ],
+                        [
+                            'path' => 'top-rated',
+                            'title' => 'Top Rated',
+                            'url' => url('/tvs/top-rated'),
+                        ],
+                    ],
+                ],
+                [
                     'path' => 'peoples',
                     'title' => 'Peoples',
                     'childs' => [

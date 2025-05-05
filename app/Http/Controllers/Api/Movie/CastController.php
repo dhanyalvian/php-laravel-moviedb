@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api\Movies;
+namespace App\Http\Controllers\Api\Movie;
 
 use Illuminate\Http\Request,
     Illuminate\Support\Str;
-use App\Http\Controllers\Api\MoviesController;
+use App\Http\Controllers\Api\MovieController;
 
-class CastsController extends MoviesController
+class CastController extends MovieController
 {
     public function index(string $uid, Request $req)
     {
         $this->sLimit($req);
         $model = $this->getModel();
-        $result = $model->getMovieTopCast($uid);
+        $result = $model->getTopCast($uid);
         $resource = $this->getResource($result);
 
         return $this->respList(true, $resource);

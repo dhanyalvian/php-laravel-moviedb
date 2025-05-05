@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Api\Movies;
+namespace App\Http\Controllers\Api\Movie;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\MoviesController;
+use App\Http\Controllers\Api\MovieController;
 
 
-class PopularController extends MoviesController
+class NowplayingController extends MovieController
 {
     public function index(Request $req)
     {
         $this->sLimit($req);
         $page = $this->getPage($req);
         $model = $this->getModel();
-        $result = $model->getMoviesPopular($page);
+        $result = $model->getNowplaying($page);
         $resource = $this->getResource($result);
 
         return $this->respList(true, $resource);

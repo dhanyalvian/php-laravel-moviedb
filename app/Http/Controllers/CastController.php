@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\Models\Movies;
+use App\Models\External\MovieModel;
 
-class CastsController extends MoviesController
+class CastController extends MovieController
 {
+    protected function getModel()
+    {
+        return new MovieModel();
+    }
+
     public function list(string $uid): view
     {
         $cfg = $this->getConfigApp();
         $nav = $this->getNavMenu('movies', '');
         $peopleMax = 8;
-        $model = new Movies();
-        $movie = $model->getMovieDetail($uid);
+        $model = $this->getModel();
+        $movie = $model->getDetail($uid);
         $data = compact(
             'uid',
             'cfg',
@@ -21,7 +26,7 @@ class CastsController extends MoviesController
             'peopleMax',
             'movie',
         );
-        
+
         return view('casts/list', $data);
     }
 }

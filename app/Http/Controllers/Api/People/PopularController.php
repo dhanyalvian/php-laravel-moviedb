@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Api\Peoples;
+namespace App\Http\Controllers\Api\People;
 
 use Illuminate\Http\Request,
     Illuminate\Support\Str;
 use App\Http\Controllers\Api\ApiController,
-    App\Models\PeoplesModel;
+    App\Models\External\PeopleModel;
 
 class PopularController extends ApiController
 {
     protected function getModel()
     {
-        return new PeoplesModel();
+        return new PeopleModel();
     }
 
     public function index(Request $req)
@@ -31,7 +31,7 @@ class PopularController extends ApiController
         foreach ($result['results'] as $row) {
             $row["profile_url"] = url('/peoples/' . $row['id'] . '-' . Str::slug($row['name'], '-'));
             $row['profile_known_for'] = $this->getProfileKnownFor($row['known_for']);
-            
+
             if ($row['profile_path']) {
                 $row['profile_path'] = sprintf(
                     "%s%s%s",
@@ -42,7 +42,7 @@ class PopularController extends ApiController
             } else {
                 $row['profile_path'] = '';
             }
-            
+
             $records[] = $row;
         }
 

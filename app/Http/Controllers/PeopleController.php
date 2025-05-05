@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View,
     Illuminate\Http\Request;
-use App\Models\Peoples;
+use App\Models\External\PeopleModel;
 
-class PeoplesController extends BaseController
+class PeopleController extends BaseController
 {
     protected function getModel()
     {
-        return new Peoples();
+        return new PeopleModel();
     }
     
     public function popular(Request $req): view
@@ -18,22 +18,16 @@ class PeoplesController extends BaseController
         $title = 'Popular Peoples';
         $ep = 'peoples';
         $path = 'popular';
-        // $page = 1;
-        // $model = $this->getModel();
-        // $records = $model->getPeoplesPopular($page);
         
         $cfg = $this->getConfigApp();
         $nav = $this->getNavMenu($ep, $path);
         $peopleMax = 8;
-        // $maxpage = $this->getPageMax();
         $data = compact(
             'cfg',
-            // 'maxpage',
             'nav',
             'title',
             'path',
             'peopleMax',
-            // 'records'
         );
         
         return view('peoples/list', $data);

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\External;
 
-class PeoplesModel extends Tmdbapi
+class PeopleModel extends TmdbModel
 {
     public function getPeoplesPopular(int $page): array
     {

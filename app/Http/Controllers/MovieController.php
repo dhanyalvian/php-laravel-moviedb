@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View,
     Illuminate\Http\Request;
-use App\Models\Movies;
+use App\Models\External\MovieModel;
 
-class MoviesController extends BaseController
+class MovieController extends BaseController
 {
     protected function getModel()
     {
-        return new Movies();
+        return new MovieModel();
     }
     
     protected function generateList(string $title, string $path, array $records): view
@@ -31,23 +31,23 @@ class MoviesController extends BaseController
         
         return view('movies/list', $data);
     }
-
-    public function nowplaying(Request $req): view
-    {
-        $title = 'Now Playing';
-        $path = 'now-playing';
-        $model = $this->getModel();
-        $records = $model->getMovieNowPlaying($this->getPage($req));
-        
-        return $this->generateList($title, $path, $records);
-    }
     
     public function popular(Request $req): view
     {
         $title = 'Popular';
         $path = 'popular';
         $model = $this->getModel();
-        $records = $model->getMoviePopular($this->getPage($req));
+        $records = $model->getPopular($this->getPage($req));
+        
+        return $this->generateList($title, $path, $records);
+    }
+
+    public function nowplaying(Request $req): view
+    {
+        $title = 'Now Playing';
+        $path = 'now-playing';
+        $model = $this->getModel();
+        $records = $model->getNowPlaying($this->getPage($req));
         
         return $this->generateList($title, $path, $records);
     }
@@ -57,7 +57,7 @@ class MoviesController extends BaseController
         $title = 'Top Rated';
         $path = 'top-rated';
         $model = $this->getModel();
-        $records = $model->getMovieTopRated($this->getPage($req));
+        $records = $model->getTopRated($this->getPage($req));
         
         return $this->generateList($title, $path, $records);
     }
@@ -67,7 +67,7 @@ class MoviesController extends BaseController
         $title = 'Upcoming';
         $path = 'upcoming';
         $model = $this->getModel();
-        $records = $model->getMovieUpcoming($this->getPage($req));
+        $records = $model->getUpcoming($this->getPage($req));
         
         return $this->generateList($title, $path, $records);
     }
@@ -79,14 +79,12 @@ class MoviesController extends BaseController
         $peopleMax = 8;
         $movieMax = 6;
         
-        $movie = new Movies();
-        $detail = $movie->getMovieDetail($uid);
-        $runtime = $this->getMovieRuntime($detail);
-        $score = $this->getMovieScore($detail);
-        $origin = $this->getMovieOrigin($detail);
-        $genres = $this->getMovieGenres($detail);
-        // $topcast = $movie->getMovieTopCast($uid);
-        // $recommendations = $movie->getMovieRecommendations($uid);
+        $movie = $this->getModel();
+        $detail = $movie->getDetail($uid);
+        $runtime = $this->getRuntime($detail);
+        $score = $this->getScore($detail);
+        $origin = $this->getOrigin($detail);
+        $genres = $this->getGenres($detail);
         $data = compact(
             'cfg',
             'nav',
@@ -98,14 +96,12 @@ class MoviesController extends BaseController
             'score',
             'origin',
             'genres',
-            // 'topcast',
-            // 'recommendations'
         );
 
         return view('movies/detail', $data);
     }
 
-    private function getMovieRuntime(array $detail): string
+    private function getRuntime(array $detail): string
     {
         $runtime = $detail['runtime'];
         $hours = floor($runtime / 60);
@@ -114,12 +110,12 @@ class MoviesController extends BaseController
         return $hours . "h " . $min . "m";
     }
 
-    private function getMovieScore(array $detail): int
+    private function getScore(array $detail): int
     {
         return round($detail['vote_average'] * 10, 0);
     }
 
-    private function getMovieOrigin(array $detail): string
+    private function getOrigin(array $detail): string
     {
         $result = "";
 
@@ -130,7 +126,7 @@ class MoviesController extends BaseController
         return $result;
     }
 
-    private function getMovieGenres(array $detail): string
+    private function getGenres(array $detail): string
     {
         $result = "";
         $data = [];

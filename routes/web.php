@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController,
-    App\Http\Controllers\MoviesController,
-    App\Http\Controllers\PeoplesController,
-    App\Http\Controllers\CastsController;
+    App\Http\Controllers\MovieController,
+    App\Http\Controllers\PeopleController,
+    App\Http\Controllers\CastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +23,11 @@ use App\Http\Controllers\HomeController,
 // });
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/movies/now-playing', [MoviesController::class, 'nowplaying']);
-Route::get('/movies/popular', [MoviesController::class, 'popular']);
-Route::get('/movies/top-rated', [MoviesController::class, 'toprated']);
-Route::get('/movies/upcoming', [MoviesController::class, 'upcoming']);
-Route::get('/movies/{uid}', [MoviesController::class, 'detail']);
-Route::get('/movies/{uid}/casts', [CastsController::class, 'list']);
+Route::get('/movies/now-playing', [MovieController::class, 'nowplaying']);
+Route::get('/movies/popular', [MovieController::class, 'popular']);
+Route::get('/movies/top-rated', [MovieController::class, 'toprated']);
+Route::get('/movies/upcoming', [MovieController::class, 'upcoming']);
+Route::get('/movies/{uid}', [MovieController::class, 'detail']);
+Route::get('/movies/{uid}/casts', [CastController::class, 'list']);
 
-Route::get('/peoples/popular', [PeoplesController::class, 'popular']);
+Route::get('/peoples/popular', [PeopleController::class, 'popular']);
