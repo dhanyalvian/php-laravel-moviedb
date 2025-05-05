@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->string('imdb_id')->nullable()->default('');
             $table->string('status')->nullable()->default('');
             $table->integer('runtime')->nullable()->default(0);
-            $table->integer('revenue')->default(0);
+            $table->double('budget')->default(0);
+            $table->double('revenue')->default(0);
             $table->decimal('vote_average', 8, 3)->default(0);
             $table->integer('vote_count')->default(0);
             $table->jsonb('production_companies')->nullable()->default('[]');
@@ -30,6 +31,7 @@ return new class extends Migration {
             $table->dropColumn('imdb_id');
             $table->dropColumn('status');
             $table->dropColumn('runtime');
+            $table->dropColumn('budget');
             $table->dropColumn('revenue');
             $table->dropColumn('vote_average');
             $table->dropColumn('vote_count');

@@ -57,6 +57,7 @@ class MovieModel extends Model
             'imdb_id' => $movie['imdb_id'],
             'status' => $movie['status'],
             'runtime' => $movie['runtime'],
+            'budget' => $movie['budget'],
             'revenue' => $movie['revenue'],
             'vote_average' => (float) $movie['vote_average'],
             'vote_count' => $movie['vote_count'],
