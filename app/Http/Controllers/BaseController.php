@@ -19,7 +19,10 @@ class BaseController extends Controller
     protected function getConfigApp(): array
     {
         $tmdbUrlMedia = env('TMDB_URL_MEDIA');
+        $limitDefault = env('LIMIT_DEFAULT', 10);
+        
         return [
+            'base_url' => env('BASE_URL'),
             'page_title' => env('APP_NAME'),
             'url_img_thumbnail' => $tmdbUrlMedia . env('TMDB_URL_IMG_THUMBNAIL', ''),
             'url_img_detail' => $tmdbUrlMedia . env('TMDB_URL_IMG_DETAIL', ''),
@@ -27,6 +30,12 @@ class BaseController extends Controller
             'url_img_profile' => $tmdbUrlMedia . env('TMDB_URL_IMG_PROFILE', ''),
             'format_date' => env('FORMAT_DATE', ''),
             'format_year' => env('FORMAT_YEAR', ''),
+            'url_api' => env('MDB_URL_API'),
+            'limits' => [
+                'home' => env('LIMIT_HOME', $limitDefault),
+                'movie' => env('LIMIT_MOVIE', $limitDefault),
+                'placeholder' => env('LIMIT_PLACEHOLDER', $limitDefault),
+            ],
         ];
     }
 

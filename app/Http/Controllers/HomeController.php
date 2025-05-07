@@ -14,12 +14,12 @@ class HomeController extends BaseController
     {
         $cfg = $this->getConfigApp();
         $nav = $this->getNavMenu('', '');
-        $movieMax = 6;
+        $limit = $cfg['limits']['home'];
         
         $data = compact(
             'cfg',
             'nav',
-            'movieMax',
+            'limit',
         );
 
         return view('home', $data);

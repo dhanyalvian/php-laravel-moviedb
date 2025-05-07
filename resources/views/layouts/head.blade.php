@@ -10,3 +10,7 @@
 <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+
+<script type="text/javascript">
+    var baseUrl = "{{ $cfg['base_url'] }}";
+</script>

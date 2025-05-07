@@ -1,4 +1,4 @@
-@for ($i = 1; $i <= $movieMax; $i++)
+@for ($i = 1; $i <= $cfg['limits']['placeholder']; $i++)
     <div class="card card-placeholder d-flex flex-wrap align-items-left">
         <div class="card-img">
             <a href="">
@@ -14,4 +14,4 @@
             </p>
         </div>
     </div>
-@endfor
+@endfor 

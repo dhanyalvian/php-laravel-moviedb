@@ -54,14 +54,20 @@ class MovieModel extends Model
     public function updateMovieDetail(array $movie): bool
     {
         $data = [
-            'imdb_id' => $movie['imdb_id'],
-            'status' => $movie['status'],
-            'runtime' => $movie['runtime'],
-            'budget' => $movie['budget'],
-            'revenue' => $movie['revenue'],
+            'imdb_id' => $movie['imdb_id'] ?? '',
+            'status' => $movie['status'] ?? '',
+            'runtime' => $movie['runtime'] ?? 0,
+            'budget' => $movie['budget'] ?? 0,
+            'revenue' => $movie['revenue'] ?? 0,
             'vote_average' => (float) $movie['vote_average'],
-            'vote_count' => $movie['vote_count'],
-            'production_companies' => '[]',
+            'vote_count' => $movie['vote_count'] ?? 0,
+            'production_companies' => $movie['production_companies'] ?? '[]',
+            'homepage' => $movie['homepage'] ?? '',
+            'tagline' => $movie['tagline'] ?? '',
+            'popularity' => (float) $movie['popularity'],
+            'origin_country' => $movie['origin_country'] ?? '[]',
+            'production_countries' => $movie['production_countries'] ?? '[]',
+            'spoken_languages' => $movie['spoken_languages'] ?? '[]',
         ];
 
         return DB::table($this->table)

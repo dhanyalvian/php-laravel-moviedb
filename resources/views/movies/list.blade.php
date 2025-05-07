@@ -25,9 +25,11 @@
                     <button id="more-page-btn"
                         class="pagination-more btn btn-outline-secondary rounded-pill"
                         type="button"
-                        data-url="{{ url('/api/movies/' . $path) }}"
+                        data-url="{{ $cfg['url_api'] . '/movies/' . $path }}"
+                        {{-- data-url="{{ url('/api/movies/' . $path) }}" --}}
                         data-current-page="1"
-                        data-next-page="1">
+                        data-next-page="1"
+                        data-limit="{{ $cfg['limits']['movie'] }}">
                         more
                     </button>
                 </div>

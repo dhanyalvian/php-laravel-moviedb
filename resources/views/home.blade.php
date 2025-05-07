@@ -18,10 +18,11 @@
                     Popular Movies
                     <a href="{{ url('/movies/popular') }}"
                         class="link-more badge rounded-pill text-bg-info"
-                        data-url="{{ url('/api/movies/popular') }}"
+                        {{-- data-url="{{ url('/api/movies/popular') }}" --}}
+                        data-url="{{ $cfg['url_api'] . '/movies/popular' }}"
                         data-current-page="1"
                         data-next-page="1"
-                        data-limit="{{ $movieMax }}">
+                        data-limit="{{ $limit }}">
                         more
                     </a>
                 </h2>
@@ -38,10 +39,11 @@
                     Now Playing Movies
                     <a href="{{ url('/movies/now-playing') }}"
                         class="link-more badge rounded-pill text-bg-info"
-                        data-url="{{ url('/api/movies/now-playing') }}"
+                        {{-- data-url="{{ url('/api/movies/now-playing') }}" --}}
+                        data-url="{{ $cfg['url_api'] . '/movies/now-playing' }}"
                         data-current-page="1"
                         data-next-page="1"
-                        data-limit="{{ $movieMax }}">
+                        data-limit="{{ $limit }}">
                         more
                     </a>
                 </h2>
@@ -58,10 +60,11 @@
                     Upcoming Movies
                     <a href="{{ url('/movies/upcoming') }}"
                         class="link-more badge rounded-pill text-bg-info"
-                        data-url="{{ url('/api/movies/upcoming') }}"
+                        {{-- data-url="{{ url('/api/movies/upcoming') }}" --}}
+                        data-url="{{ $cfg['url_api'] . '/movies/upcoming' }}"
                         data-current-page="1"
                         data-next-page="1"
-                        data-limit="{{ $movieMax }}">
+                        data-limit="{{ $limit }}">
                         more
                     </a>
                 </h2>
@@ -78,10 +81,11 @@
                     Top Rated Movies
                     <a href="{{ url('/movies/top-rated') }}"
                         class="link-more badge rounded-pill text-bg-info"
-                        data-url="{{ url('/api/movies/top-rated') }}"
+                        {{-- data-url="{{ url('/api/movies/top-rated') }}" --}}
+                        data-url="{{ $cfg['url_api'] . '/movies/top-rated' }}"
                         data-current-page="1"
                         data-next-page="1"
-                        data-limit="{{ $movieMax }}">
+                        data-limit="{{ $limit }}">
                         more
                     </a>
                 </h2>
