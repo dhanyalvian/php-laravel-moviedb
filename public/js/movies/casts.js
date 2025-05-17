@@ -1,7 +1,7 @@
 const topcastId = '#top-cast';
 const topcastNav = '.link-more';
 
-$(document).ready(function() {
+$(document).ready(function () {
     lazyload();
     getMovieCastRecords(topcastId, topcastNav, 0);
 });
@@ -9,7 +9,7 @@ $(document).ready(function() {
 function getMovieCastRecords(contentId, contentNav, fadeIn) {
     const pageUrl = $(contentNav).attr('data-url');
     const limit = $(contentNav).attr('data-limit');
-    
+
     $.ajax({
         type: 'GET',
         url: pageUrl,
@@ -18,6 +18,9 @@ function getMovieCastRecords(contentId, contentNav, fadeIn) {
         },
         async: true,
         contentType: 'application/json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+        },
         success: (response) => {
             $(contentId + ' .card-placeholder').remove();
             $.each(response.data.records, function (_, rec) {
@@ -25,7 +28,7 @@ function getMovieCastRecords(contentId, contentNav, fadeIn) {
                     .appendTo(contentId + ' .container>.row.p-2')
                     .fadeIn(fadeIn);
             });
-            
+
             $(contentNav).prop('disabled', false)
                 .attr('data-current-page', response.data.page)
                 .attr('data-next-page', response.data.next)

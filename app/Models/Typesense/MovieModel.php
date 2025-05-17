@@ -6,7 +6,7 @@ class MovieModel extends BaseModel
 {
     protected $tsCollection = 'moviedb_movies';
 
-    public function upsert(array $movie)
+    public function upsert(array $movie, array $recommendationIds)
     {
         $collection = $this->getTsCollection();
         $posterPath = sprintf(
@@ -30,6 +30,7 @@ class MovieModel extends BaseModel
                 'vote_average' => $movie['vote_average'],
                 'vote_count' => $movie['vote_count'],
                 'popularity' => $movie['popularity'],
+                'recommendation_ids' => $recommendationIds,
             ],
             [
                 'dirty_values' => 'coerce_or_reject',

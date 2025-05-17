@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\MovieEsJob;
+use App\Jobs\MovieRecommendationJob;
 use App\Jobs\MovieTsJob;
 use Illuminate\Console\Command;
 use App\Models\MovieModel;
@@ -35,10 +36,6 @@ class CollectCrawler extends Command
         $movies = MovieModel::all();
         
         foreach ($movies as $movie) {
-            // if ($no == 3) {
-            //     break;
-            // }
-            
             $this->putIntoQueue($type, $movie->toArray());
             $total++;
         }
@@ -59,6 +56,11 @@ class CollectCrawler extends Command
             
             case 'es':
                 MovieEsJob::dispatch($queueData);
+                $status = true;
+                break;
+            
+            case 'recommendation':
+                MovieRecommendationJob::dispatch($queueData);
                 $status = true;
                 break;
             

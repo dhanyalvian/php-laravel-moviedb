@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('original_title');
             $table->string('original_language');
             $table->text('overview');
-            $table->string('slug');
+            $table->string('slug')->unique('movies_slug');
             $table->string('poster_path');
             $table->string('backdrop_path');
             $table->boolean('adult');

@@ -21,6 +21,9 @@ $(document).ready(function() {
             },
             async: true,
             contentType: 'application/json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+            },
             success: (response) => {
                 $(contentId + ' .card-placeholder').remove();
                 $.each(response.data.records, function (_, rec) {
@@ -69,6 +72,9 @@ $(document).ready(function() {
             },
             async: true,
             contentType: 'application/json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+            },
             success: (response) => {
                 $(contentId + ' .card-placeholder').remove();
                 $.each(response.data.records, function (_, rec) {

@@ -1,3 +1,7 @@
+<div id="progress-bar" class="progress fixed-top" role="progressbar" aria-label="Progress 2px high" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="height: 2px; top:71px; background-color: #ffffff; display: none;">
+    <div class="progress-bar" style="width: 2%;"></div>
+</div>
+
 <header class="p-3 fixed-top border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">

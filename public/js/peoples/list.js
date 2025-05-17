@@ -30,6 +30,8 @@ $(document).ready(function() {
     });
 
     function getPeopleRecords(pageNext, fadeIn) {
+        showProgress();
+        
         const pageNavId = '#page-nav';
         const pageUrl = $(contentNav).attr('data-url');
         
@@ -41,6 +43,12 @@ $(document).ready(function() {
             },
             async: true,
             contentType: 'application/json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+            },
+            xhr: function() {
+                return loadProgress();
+            },
             success: (response) => {
                 $(contentId + ' .card-placeholder').remove();
                 $.each(response.data.records, function (_, rec) {
@@ -54,10 +62,13 @@ $(document).ready(function() {
                     .attr('data-next-page', response.data.next)
                     .html('more');
                 $(pageNavId).removeClass('d-none');
+                
+                hideProgress();
             },
             error: function (response) {
                 $(contentNav).prop('disabled', false);
                 console.log(response);
+                hideProgress();
             }
         });
     }

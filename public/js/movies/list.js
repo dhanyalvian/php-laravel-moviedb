@@ -1,38 +1,40 @@
 const contentId = '#movies-list';
 const contentNav = '#more-page-btn';
 
-$(document).ready(function() {
+$(document).ready(function () {
     lazyload();
     getMovieRecords(1, 0);
-    
+
     $(contentNav).click(function (e) {
         if ($(this).prop('disabled')) {
             e.preventDefault();
             return;
         }
-        
+
         $(this).prop('disabled', true);
-        
+
         const pageNext = $(this).attr('data-next-page');
 
         $(this).html(getMorePageLoader());
 
         getMovieRecords(pageNext, defaultFadeIn);
-        
+
         e.preventDefault();
     });
-    
-    $(window).scroll(function() {
+
+    $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() >= $(contentId).height() + 5) {
             $(contentNav).click();
         }
     });
 
     function getMovieRecords(pageNext, fadeIn) {
+        showProgress();
+        
         const pageNavId = '#page-nav';
         const pageUrl = $(contentNav).attr('data-url');
         const pageLimit = $(contentNav).attr('data-limit');
-        
+
         $.ajax({
             type: 'GET',
             url: pageUrl,
@@ -42,6 +44,12 @@ $(document).ready(function() {
             },
             async: true,
             contentType: 'application/json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+            },
+            xhr: function() {
+                return loadProgress();
+            },
             success: (response) => {
                 $(contentId + ' .card-placeholder').remove();
                 $.each(response.data.results, function (_, rec) {
@@ -49,16 +57,19 @@ $(document).ready(function() {
                         .appendTo(contentId + ' .container>.row.p-2')
                         .fadeIn(fadeIn);
                 });
-                
+
                 $(contentNav).prop('disabled', false)
                     .attr('data-current-page', response.data.page)
                     .attr('data-next-page', response.data.next)
                     .html('more');
                 $(pageNavId).removeClass('d-none');
+                
+                hideProgress();
             },
             error: function (response) {
                 $(contentNav).prop('disabled', false);
                 console.log(response);
+                hideProgress();
             }
         });
     }

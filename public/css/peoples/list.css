@@ -111,6 +111,7 @@
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 0;
+    padding-bottom: 3px;
 }
 
 .peoples-list .row .card .card-title a {
@@ -125,4 +126,5 @@
 .peoples-list .row .card .card-text {
     font-size: 13px;
     font-weight: normal;
+    line-height: normal;
 }

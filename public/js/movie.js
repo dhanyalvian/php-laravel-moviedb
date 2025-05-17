@@ -2,7 +2,7 @@ function getMovieRecords(contentId, contentNav, fadeIn) {
     const pageUrl = $(contentNav).attr('data-url');
     const pageNext = $(contentNav).attr('data-next-page');
     const limit = $(contentNav).attr('data-limit');
-    
+
     $.ajax({
         type: 'GET',
         url: pageUrl,
@@ -12,6 +12,9 @@ function getMovieRecords(contentId, contentNav, fadeIn) {
         },
         async: true,
         contentType: 'application/json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer abcd1234Dna");
+        },
         success: (response) => {
             $(contentId + ' .card-placeholder').remove();
             $.each(response.data.results, function (_, rec) {
@@ -19,7 +22,7 @@ function getMovieRecords(contentId, contentNav, fadeIn) {
                     .appendTo(contentId + ' .container>.row.p-2')
                     .fadeIn(fadeIn);
             });
-            
+
             $(contentNav).prop('disabled', false)
                 .attr('data-current-page', response.data.page)
                 .attr('data-next-page', response.data.next)

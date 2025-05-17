@@ -14,6 +14,11 @@ class BaseModel
     {
         $this->ts = $this->initConnection();
     }
+    
+    public function getClient(): Client
+    {
+        return $this->ts;
+    }
 
     protected function initConnection(): Client
     {
@@ -37,7 +42,7 @@ class BaseModel
         ]);
     }
     
-    protected function getTsCollection(): string
+    public function getTsCollection(): string
     {
         return $this->tsCollection;
     }
